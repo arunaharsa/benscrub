@@ -1,0 +1,22 @@
+.header.mobile hr {
+  margin: 0.2em 0 0.2em 0;
+}
+.header.mobile{
+  height: 97px;	
+}
+
+p {
+  line-height: inherit;
+}
+
+.article .article_tweet {
+  border: 0
+}
+
+.header.mobile .logo_wrapper {
+  margin-left: -85px;
+}
+
+.header.mobile .logo_wrapper a.logo_btn img {
+  width: 170px;
+}

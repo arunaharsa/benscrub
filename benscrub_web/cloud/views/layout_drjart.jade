@@ -1,0 +1,53 @@
+html(lang='en')
+head
+  meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+  meta(charset='UTF-8')
+  meta(id="vp", name='viewport', content='width=device-width, initial-scale=1')
+  title Benscrub - Beauty Supplies Delivered
+  meta(content='arunaharsa', name='application-name')
+  meta(content='Beauty Supplies Delivered', name='description')
+  meta(content='Aruna Harsa', name='author')
+
+  script(type='text/javascript').
+    WebFontConfig = { fontdeck: { id: '55728' } };
+    (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+    })();
+
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.1/css/foundation.min.css', rel='stylesheet')
+  link(href='http://us.drjart.com/assets/application-0aa7ea730575959875cde472d1768595.css', rel='stylesheet')
+  link(href='/static/css/util.css', rel='stylesheet')
+  link(href='/static/css/app_drjart.css', rel='stylesheet')
+  script(src='http://us.drjart.com/assets/application-a953fc69cc1b4422687fcb6160232678.js')
+  script(type='text/javascript').
+    var ua = navigator.userAgent;
+    var checker = {
+    iphone: ua.match(/(iPhone|iPod)/),
+    blackberry: ua.match(/BlackBerry/),
+    android: ua.match(/Android/),
+    ipad:ua.match(/iPad/)
+    };
+    var mvp = document.getElementById('vp');
+    if (checker.android || checker.iphone) {
+    mvp.setAttribute('content','width=502');
+    } else if (checker.ipad) {
+    mvp.setAttribute('content','width=1012');
+    } else {
+    mvp.setAttribute('content','width=device-width, initial-scale=1, maximum-scale=1');
+    }
+
+  body
+    block appcontent
+
+    script(type='text/javascript').
+      $(document).ready(function(e){
+      TIIA.views.welcome_view();
+      });
+    script(src='/static/js/app.js')
+

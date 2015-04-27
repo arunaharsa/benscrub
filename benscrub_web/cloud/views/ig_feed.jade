@@ -1,0 +1,359 @@
+//- extends layout
+
+//- block appcontent
+//-   main.bg-graybodybackground
+//-     section
+//- p=JSON.stringify(data)
+
+mixin ig_comps
+  .root
+    .content-wrapper
+      .page-landing
+        #feed-hero.feed.hero.hero-carrot
+          .hero-content-wrapper
+            .hero-content
+              h3   Create community  
+              h1   Stories of belonging      
+              p.body_copy_16px
+                | Explore community stories—what moves us to share our homes, ideas, and lives
+              a.btn.btn-primary.btn-rausch.btn-tell-story(href='/en/tool') Tell your story
+          .hero-opacity-overlay
+        .scrollme
+          section#feed.feed.animateme(data-when='enter', data-easing='easeinout', data-from='.5', data-to='0', data-translatey='-210', style='opacity: 1; transform: translate3d(0px, -198px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);')
+            .scrollme
+              .animateme(data-when='enter', data-easing='easein', data-from='.8', data-to='0', data-opacity='0', style='opacity: 0; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);')
+                h2.section-title Community Wall
+                ul.feed-stats
+                  li.header
+                    span.title Statistics
+                  li.stat-symbols
+                    span.icon.icon_create-symbol
+                    span.metric
+                      span.title 157264
+                      span.desc  Symbols created 
+                  li.stat-users
+                    span.icon.icon_users
+                    span.metric
+                      span.title 131186
+                      span.desc  Active users 
+                  li.stat-community
+                    span.icon.icon_popular-share
+                    span.metric
+                      span.title Belonging
+                      span.desc  Most popular shared word 
+                .feed-filters
+                  .wrapper
+                    .filter-and-search.container
+                      .filters-toggle.btn.btn-medium.btn-gray-dark.hide-mobile
+                        | Filter  
+                        span.carrot
+                      .filters-search
+                        input#location(type='text', placeholder='Location', autocomplete='off')
+                      .mobile-filter-toggle.filters-toggle.btn.btn-medium.btn-gray-dark.show-mobile
+                        | Filter  
+                        span.carrot
+                  .feed-filters-list.closed
+                    .feed-filters-header.wrapper
+                      .container
+                        span All
+                        span.close ×
+                    .wrapper
+                      .container
+                        ul
+                          li
+                            a#reset-filters.btn.btn-medium
+                              | All
+                              .remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='belonging')
+                              span.category-name Belonging
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='adventure')
+                              span.category-name Adventure
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='community')
+                              span.category-name Community
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='home')
+                              span.category-name Home
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='friendship')
+                              span.category-name Friendship
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='discovery')
+                              span.category-name Discovery
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='neighborhoods')
+                              span.category-name Neighborhoods
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='inspiration')
+                              span.category-name Inspiration
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='kindness')
+                              span.category-name Kindness
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='trust')
+                              span.category-name Trust
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='fun')
+                              span.category-name Fun
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='magic')
+                              span.category-name Magic
+                              span.remove ×
+                          li
+                            a.btn.btn-medium.filter(data-filter='beauty')
+                              span.category-name Beauty
+                              span.remove ×
+            #feed-content(style='opacity: 1; top: 0px; transition: all 0.3s; -webkit-transition: all 0.3s;')
+              #feed-tiles.feed-tiles(style='position: relative; height: 2880px;')
+                .feed-tile.instagram.span-1.rollover-container(style='position: absolute; left: 0px; top: 0px; visibility: visible; display: block; background: rgb(86, 90, 92);', data-uuid='')
+                  .front
+                    .tile-photo
+                      img(src='//scontent-a.cdninstagram.com/hphotos-prn/t51.2885-15/929225_552508164880610_427607390_n.jpg')
+                  .rollover(style='background:#565a5c')
+                    .icon.tile-icon.icon_instagram_outline.rollover-3
+                    .container.description.bottom.rollover-1
+                      h3
+                        a(href='http://instagram.com/p.a.u.l.i.n.e_d', target='_blank')  @p.a.u.l.i.n.e_d 
+                      p
+                        span.description-copy  Tygres #LeTygre #tigers #boston #airbnb cc @marined7 
+                .feed-tile.user-story-full.span-2.rollover-container(data-uuid='f8cd4204-5f63-4f6a-b8ec-9a400878f3e2', style='position: absolute; left: 320px; top: 0px; visibility: visible; display: block; background: rgb(123, 0, 81);')
+                  .front(style='background:#7b0051')
+                    .tile-photo
+                      img(src='https://a2.muscache.com/create/symbol-story/f8cd4204-5f63-4f6a-b8ec-9a400878f3e2.jpg?downsize=*:394&downsize=620:*&resize=620:*&crop=620:394;*,*&resize=*:394&crop=620:394;*,*')
+                    .description
+                      .carrot(style='border-bottom-color:#7b0051')
+                      .symbol.symbol-sm
+                        img(src='https://a2.muscache.com/create/5cbd32d0a1d72af143ae230462e78eab9709f969.png')
+                      .description-container
+                        .wrapper
+                          h3  Platt 
+                          p
+                            span.location-icon
+                              i.icon.icon_location_pin
+                              |  Edgartown
+                            span.description-copy
+                              | I like sailing. I was taught by my father and have sailed all of my life. When you sail you leave the safety of land and journey past the familiar into the ever changing sea. I love the feeling of...
+                  .rollover(style='background:#7b0051')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .symbol.symbol-lg.rollover-2
+                      img(src='https://a2.muscache.com/create/d19bd24e3649c6e432ce775bf924e4a865f81833.png')
+                    .description.bottom.rollover-1
+                      .profile-photo
+                        img(src='https://a1.muscache.com/ic/users/902100/profile_pic/1429453024/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Platt
+                      p
+                        span.location
+                          i.icon.icon_location_pin
+                          |  Edgartown, Massachusetts, United States
+                .feed-tile.instagram.span-1.rollover-container(style='position: absolute; left: 0px; top: 320px; visibility: visible; display: block; background: rgb(0, 122, 135);', data-uuid='')
+                  .front
+                    .tile-photo
+                      img(src='//scontent-b.cdninstagram.com/hphotos-xaf1/t51.2885-15/10693759_1483950745189504_156873999_n.jpg')
+                  .rollover(style='background:#007a87')
+                    .icon.tile-icon.icon_instagram_outline.rollover-3
+                    .container.description.bottom.rollover-1
+                      h3
+                        a(href='http://instagram.com/zetravelista', target='_blank')  @zetravelista 
+                      p
+                        span.description-copy
+                          | After an exhausting, death-defying trip back to Bangkok, we stayed in the mode charming guesthouse with an unbelievably wonderful host. Who knew houses evening existed in this city! #bkk...
+                .feed-tile.tweet.span-1(data-uuid='', style='position: absolute; left: 0px; top: 640px; visibility: visible; display: block;')
+                  .top
+                    .icon.tile-icon.icon_twitter_outline
+                    h3
+                      a(href='https://twitter.com/blogger_bazaar', target='_blank')  @blogger_bazaar
+                  .container.description.bottom
+                    p  #airbnb #ny #nyc @ 48th St &amp; 8th Ave http://t.co/oBSclco9s0 
+                .feed-tile.symbol.span-1.rollover-container(style='position: absolute; left: 320px; top: 640px; visibility: visible; display: block; background: rgb(255, 90, 95);', data-uuid='4dc1b2e9-68ca-4eda-bfb3-a17bca05ef54')
+                  .front
+                    .tile-photo.container.symbol-md
+                      img(src='https://a2.muscache.com/create/5da9a4584a45e4ceff605b1f6ece443b804254e4.png')
+                  .rollover(style='background:#ffb400')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .description.bottom.container.rollover-1
+                      .profile-photo
+                        img(src='https://a0.muscache.com/ic/users/9593184/profile_pic/1382538267/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Nicolas
+                      p
+                        span.location-icon
+                          i.icon.icon_location_pin
+                          | Dublin, Dublin, Ireland
+                .feed-tile.instagram.span-1.rollover-container(style='position: absolute; left: 640px; top: 640px; visibility: visible; display: block; background: rgb(180, 167, 108);', data-uuid='')
+                  .front
+                    .tile-photo
+                      img(src='//scontent-b.cdninstagram.com/hphotos-xaf1/t51.2885-15/10684269_738421419528774_1231255766_n.jpg')
+                  .rollover(style='background:#b4a76c')
+                    .icon.tile-icon.icon_instagram_outline.rollover-3
+                    .container.description.bottom.rollover-1
+                      h3
+                        a(href='http://instagram.com/kats_melbourne', target='_blank')  @kats_melbourne 
+                      p
+                        span.description-copy
+                          | The view from my Airbnb holiday apartment of the historical Melbourne Yard West tower - located just next to Dubley street, it was the main signal box for the railway system during mid 1960s....
+                .feed-tile.user-story-full.span-2.rollover-container(data-uuid='0b674fdb-6519-4155-a06e-26be5a5bbfc9', style='position: absolute; left: 0px; top: 960px; visibility: visible; display: block; background: rgb(140, 224, 113);')
+                  .front(style='background:#8ce071')
+                    .tile-photo
+                      img(src='https://a2.muscache.com/create/symbol-story/0b674fdb-6519-4155-a06e-26be5a5bbfc9.jpg?downsize=*:394&downsize=620:*&resize=620:*&crop=620:394;*,*&resize=*:394&crop=620:394;*,*')
+                    .description
+                      .carrot(style='border-bottom-color:#8ce071')
+                      .symbol.symbol-sm
+                        img(src='https://a2.muscache.com/create/1e29579a915b487fdc8ea2c21bd01271e97ee915.png')
+                      .description-container
+                        .wrapper
+                          h3  Mirjam 
+                          p
+                            span.location-icon
+                              i.icon.icon_location_pin
+                              |  Tiberias
+                            span.description-copy  
+                  .rollover(style='background:#8ce071')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .symbol.symbol-lg.rollover-2
+                      img(src='https://a2.muscache.com/create/2c29f941301c6dc7af336f2ea9225d68af3c520d.png')
+                    .description.bottom.rollover-1
+                      .profile-photo
+                        img(src='https://a2.muscache.com/ic/users/31325934/profile_pic/1429442194/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Mirjam
+                      p
+                        span.location
+                          i.icon.icon_location_pin
+                          |  US
+                .feed-tile.user-story-full.span-2.rollover-container(data-uuid='bd247896-50cc-41ed-84e7-0d5fa11ea863', style='position: absolute; left: 0px; top: 1600px; visibility: visible; display: block; background: rgb(86, 90, 92);')
+                  .front(style='background:#565a5c')
+                    .tile-photo
+                      img(src='https://a2.muscache.com/create/symbol-story/bd247896-50cc-41ed-84e7-0d5fa11ea863.JPG?downsize=*:394&downsize=620:*&resize=620:*&crop=620:394;*,*&resize=*:394&crop=620:394;*,*')
+                    .description
+                      .carrot(style='border-bottom-color:#565a5c')
+                      .symbol.symbol-sm
+                        img(src='https://a2.muscache.com/create/bfd425b95d73745e24617d70d6d63f00759d8473.png')
+                      .description-container
+                        .wrapper
+                          h3  jan 
+                          p
+                            span.location-icon
+                              i.icon.icon_location_pin
+                              |  eltham
+                            span.description-copy
+                              | Had a great experience with a Airbnb host looking after my ageing father in London. Getting excited about using Airbnb for various locations on our coming Europe sojourn.
+                  .rollover(style='background:#565a5c')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .symbol.symbol-lg.rollover-2
+                      img(src='https://a2.muscache.com/create/9dd2a531f2a47774a231868e63cad2add66f4ef3.png')
+                    .description.bottom.rollover-1
+                      .profile-photo
+                        img(src='https://a1.muscache.com/ic/users/26343467/profile_pic/1429441677/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Jan
+                      p
+                        span.location
+                          i.icon.icon_location_pin
+                          |  Melbourne, Victoria, Australia
+                .feed-tile.instagram.span-1.rollover-container(style='position: absolute; left: 640px; top: 960px; visibility: visible; display: block; background: rgb(140, 224, 113);', data-uuid='')
+                  .front
+                    .tile-photo
+                      img(src='//scontent-a.cdninstagram.com/hphotos-xaf1/l/t51.2885-15/10684135_644939425614283_1389552185_n.jpg')
+                  .rollover(style='background:#8ce071')
+                    .icon.tile-icon.icon_instagram_outline.rollover-3
+                    .container.description.bottom.rollover-1
+                      h3
+                        a(href='http://instagram.com/domeinthedesert', target='_blank')  @domeinthedesert 
+                      p
+                        span.description-copy  Repost from @laurabird 
+                .feed-tile.user-story-half.span-1.tall.rollover-container(style='position: absolute; left: 640px; top: 1280px; visibility: visible; display: block; background: rgb(86, 90, 92);', data-uuid='3fa24558-e497-45d5-be0d-c00d0eb23e19')
+                  .front
+                    .symbol.symbol-md
+                      img(src='https://a2.muscache.com/create/f243a226b0b7ffa38e493649a15babfbe0e78151.png')
+                    .description.bottom.container
+                      h3   liz  
+                      p
+                        span.location-icon
+                          i.icon.icon_location_pin
+                          | Weymouth
+                        span.description-copy This will be a first for us. So really looking forward to the experience
+                  .rollover(style='background:#b4a76c')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .description.bottom.container.rollover-1
+                      .profile-photo
+                        img(src='https://a0.muscache.com/ic/users/30393856/profile_pic/1429457095/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Liz
+                      p
+                        span.location-icon
+                          i.icon.icon_location_pin
+                          | Blandford Forum, England, United Kingdom
+                .feed-tile.tweet.span-1(data-uuid='', style='position: absolute; left: 640px; top: 1796px; visibility: visible; display: block;')
+                  .top
+                    .icon.tile-icon.icon_twitter_outline
+                    h3
+                      a(href='https://twitter.com/GlobaESolutions', target='_blank')  @GlobaESolutions
+                  .container.description.bottom
+                    p
+                      | RT @Airbnb: Train travel like it used to be in this romantic #Airbnb railway carriage http://t.co/VUc1k91vw1 http://t.co/kvLMSTt8NG
+                .feed-tile.instagram.span-1.rollover-container(style='position: absolute; left: 640px; top: 2116px; visibility: visible; display: block; background: rgb(255, 90, 95);', data-uuid='')
+                  .front
+                    .tile-photo
+                      img(src='//scontent-a.cdninstagram.com/hphotos-xfa1/t51.2885-15/10655129_796876067035092_1680781227_n.jpg')
+                  .rollover(style='background:#ff5a5f')
+                    .icon.tile-icon.icon_instagram_outline.rollover-3
+                    .container.description.bottom.rollover-1
+                      h3
+                        a(href='http://instagram.com/sweetcharityjane', target='_blank')  @sweetcharityjane 
+                      p
+                        span.description-copy
+                          | The amazing view from the balcony #airbnb #barcelona #honeyluna14 #backinbarcelona #charityplusjordan #LunasInSpain  #catalunya #instadaily #instagood #vsco #vscocam #travel #bucketlist #wanderlust
+                .feed-tile.user-story-full.span-2.rollover-container(data-uuid='4851da46-db05-443e-afda-71650ec6b941', style='position: absolute; left: 0px; top: 2240px; visibility: visible; display: block; background: rgb(255, 170, 145);')
+                  .front(style='background:#ffaa91')
+                    .tile-photo
+                      img(src='https://a2.muscache.com/create/symbol-story/4851da46-db05-443e-afda-71650ec6b941.jpg?downsize=*:394&downsize=620:*&resize=620:*&crop=620:394;*,*&resize=*:394&crop=620:394;*,*')
+                    .description
+                      .carrot(style='border-bottom-color:#ffaa91')
+                      .symbol.symbol-sm
+                        img(src='https://a2.muscache.com/create/9df7c90fede45786a9a39b1c47d120415d43e155.png')
+                      .description-container
+                        .wrapper
+                          h3  Joice 
+                          p
+                            span.location-icon
+                              i.icon.icon_location_pin
+                              |  Bangkok Thailand
+                            span.description-copy
+                              | Let my life exploring : )
+                              | I start my trip alone , and always be happy.
+                              | Caused of lovely peple i met and giving/taking/sharing our story .
+                              | All thing inspired me .
+                              | Let start our trip : D
+                  .rollover(style='background:#ffaa91')
+                    .icon.tile-icon.icon_airbnb_outline.rollover-3
+                    .symbol.symbol-lg.rollover-2
+                      img(src='https://a2.muscache.com/create/a0d322a56f17b519c371f5f969d4e55710702fe0.png')
+                    .description.bottom.rollover-1
+                      .profile-photo
+                        img(src='https://a0.muscache.com/ic/users/31495283/profile_pic/1429438201/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70')
+                      h3   Wareerat
+                      p
+                        span.location
+                          i.icon.icon_location_pin
+                          |  US
+
+
+html
+  head
+    link(href="https://a1.muscache.com/airbnb/myairbnb/assets/landing-9643887cac0087df72081df980c8cdda.css", rel="stylesheet")
+  body
+    +ig_comps
+    br
+    br
+    br
+    br
+    script(src='https://a1.muscache.com/airbnb/myairbnb/assets/landing-9f149c40358764dd74ed6ae2a1f87854.js')

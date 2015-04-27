@@ -1,0 +1,283 @@
+extends layout
+include ig_feed
+
+mixin topbar
+  .field.header-action-wrapper
+    .container
+      .baseline.col12.alpha.omega
+        .header-action(itemscope="", itemtype="http://schema.org/Organization")
+          .baseline.col3.col-md-5.col-sm-5.col-xs-8.alpha.omega
+            .header-trigger.hidden-xl.visible-md.visible-sm.visible-xs.pr10(onclick="FFAPI.methods.fireClickStream(333);")
+              span.glyphs.icon-trigger
+            .header-logo(itemscope="", itemtype="http://schema.org/Organization")
+              a.no-underline(href="/sg/?ffref=chk_hd_logo", data-tstid="Go_HomePage")
+          #divUserInfo
+            // MODULE: START Header-User
+            .baseline.col9.col-md-7.col-sm-7.col-xs-4.omega
+              .header-user.visible-xl.hidden-md.hidden-sm.hidden-xs.relative
+                .arrow-slider_top
+                ul.inlineBlock
+                  li
+                    a.tab-opener(data-tstid="Go_CurrencyChange", href="#")
+                      span.flags.flag-id
+                        | ID / IDR (Rp)
+                  //- li
+                  //-   a#header-sign-register-button.tab-opener(href="https://secure.farfetch.com/sg/login.aspx?ru=http%3a%2f%2fwww.farfetch.com%2fsg%2f", data-tstid="Go_SignInOrRegister", rel="nofollow") Sign in or Register
+                  li
+                    a#header-wishlist-button.tab-opener(trk="65", data-active-class="", data-ajax="true", data-ajax-begin="FFAPI.methods.header.carouselOpenerClick", data-ajax-complete="FFAPI.methods.header.carouselOpener", data-ajax-loading="#loader-html", data-ajax-method="GET", data-ajax-mode="replace", data-ajax-update="#header-tabs-2", data-ajax-url="/sg/Header/DetailedWishlist", data-content="carousel", data-content-started="false", data-loaded="", data-number-tab="2", data-slider-id="sliderwishlist", data-tab="header-tabs-2", data-tstid="Go_Wishlist", href="#", rel="nofollow")
+                      span.glyphs.icon-favourites
+                      span.js-wishlist-item-count 0
+                  li
+                    a#header-bag-button.tab-opener(trk="66", data-active-class="", data-ajax="true", data-ajax-begin="FFAPI.methods.header.carouselOpenerClick", data-ajax-complete="FFAPI.methods.header.carouselOpener", data-ajax-loading="#loader-html", data-ajax-method="GET", data-ajax-mode="replace", data-ajax-update="#header-tabs-3", data-ajax-url="/sg/Header/DetailedBag", data-content="carousel", data-content-started="false", data-loaded="", data-number-tab="3", data-slider-id="sliderbag", data-tab="header-tabs-3", data-tstid="Go_Bag", href="#", rel="nofollow")
+                      span.glyphs.icon-bag
+                      span.js-bag-total-formatted(data-empty-bag-total="$0.00") $0.00
+            // Show alternative header on mobile
+            .baseline.col6.col-md-7.col-sm-7.col-xs-4.omega
+              .header-user.hidden-xl.visible-md.visible-sm.visible-xs
+                ul.inlineBlock
+                  li.header-user-active
+                    a(href=" /sg/checkout/basket.aspx?ffref=hd_wl_va#SavedItems", data-tstid="Go_Wishlist", rel="nofollow")
+                      span.glyphs.icon-favourites
+                      span.header-user-counter
+                  li.header-user-bag-items
+                    a(href="/sg/checkout/basket.aspx?ffref=hd_bag_gotoc", data-tstid="Go_Bag", rel="nofollow")
+                      span.glyphs.icon-bag
+                      span.header-user-counter-bag-items
+  .field.header-nav-wrapper
+        div
+          .baseline.col12.alpha.omega
+            nav.header-nav.visible-xl.hidden-md.hidden-sm.hidden-xs.mt10
+              div
+                .container.alpha.omega
+                  span.header-primary-arrow.visible-xl.hidden-md.hidden-sm.hidden-xs.col12
+                    span.arrow-slider_bottom.animation-to-hide(style="left: 327px;")
+                // MODULE: header-search-mobile
+                .hidden-xl.visible-md.visible-sm.visible-xs
+                  ul.header-search-mobile.float-left
+                    // MOBILE GENDER SELECTION
+                    .baseline.col12.float-left.alpha.omega.bgcolor-black.gender-selection-container.hide.pb10
+                      .baseline.col6.float-left.align-center.alpha.omega
+                        .arrow_bottom.arrow-gender.arrow-gender-women.hide
+                        button.button-gender-active.button-women(data-tstid="Select_SearchWomen", data-placeholder="Search women") Women
+                        label.hide(for="mobile_gender_search_women") 249
+                        input#mobile_gender_search_women.hide(type="radio", name="mobile_gender_search", checked="checked", value="249")
+                      .baseline.col6.float-left.align-center
+                        .arrow_bottom.arrow-gender.arrow-gender-men.hide
+                        button.button-gender-inactive.button-men(data-tstid="Select_SearchMen", data-placeholder="Search men") Men
+                        label.hide(for="mobile_gender_search_men") 248
+                        input#mobile_gender_search_men.hide(type="radio", name="mobile_gender_search", value="248")
+                    // END MOBILE GENDER SELECTION
+                    li.float-left.col12.gender-container
+                      span.glyphs.icon-search.color-medium-grey
+                      form(novalidate="novalidate")
+                        input.input_black.js-input-mobile.float-left.search-mobile-input(type="search", placeholder="Search", data-placeholder="Search", maxlength="70")
+                      span.glyphs.icon-close.color-white.float-right.mobile-search-closeIcon.hide
+                .float-left.col12.absolute.hide.close-search-mobile
+                // END header-search-mobile
+                ul.inlineBlock.header-primary-nav.js-primary-nav
+                  li.js-meganav-li
+                    a.js-primary-link.anim-linkActive(href="http://benscrub.mysirclo.com") store
+                  li.js-meganav-li
+                    a.js-primary-link.anim-linkActive(href="http://www.benscrub.com/products/category/frank-body") coffee body scrubs
+                  li.js-meganav-li
+                    a.js-primary-link.anim-linkActive(href="http://www.benscrub.com/products/category/hello-hair") coconut hairwash
+                  li.js-meganav-li
+                    a.js-primary-link.anim-linkActive(href="http://www.benscrub.com/products/category/skinnyme-tea") skinny tea
+                  ul.header-login-mobile.hidden-xl.visible-md.visible-sm.visible-xs.mt30
+                    li.header-user-mobile-unlogged
+                      a#loginMobileHeader(href="/sg/login.aspx", rel="nofollow") Sign in
+                      | or
+                      a.color-medium-grey(href="/sg/login.aspx?option=register", rel="nofollow") Register
+                    li.header-user-mobile-logged.hide
+                      span.glyphs.icon-user.pr10
+                      a.underline.mr10.userLoginMobile(href="/sg/useraccount.aspx#details", rel="nofollow")
+                      a.color-medium-grey(href="/sg/account/logout?ffref=hd_lidd_so", rel="nofollow") Logout
+                ul.header-search.header-primary-nav.visible-xl.hidden-md.hidden-sm.hidden-xs
+                  li(data-tstid="Go_Search")
+                    .search-click-area
+                      span.glyphs.icon-search.icon-search-click.anim-linkActive
+                      a.no-underline.link-search-click.anim-linkActive(href="#") Search
+                    ul.header-secondary-nav.header-search-container.mt10.pb20.anim-hidden
+                      li
+                        .header-secondary-nav-shadow.visible-xl.hidden-md.hidden-sm.hidden-xs
+                        .field
+                          .baseline.col12.alpha.omega
+                            .field
+                              .container
+                                .baseline.col2.col-md-2.alpha &#160;
+                                .baseline.col10.col-md-10.col-sm-12.col-xs-12.alpha.omega.pt20
+                                  .container.pa0
+                                    .float-left
+                                      strong Search
+                                      i Start typing
+                                    .header-search-close.float-right.hide(data-tstid="Cancel_Search")
+                                      button.button-white-circle
+                                        span.glyphs.icon-close
+                            .field
+                              .container
+                                .field
+                                  .baseline.col2 &#160;
+                                  .baseline.col10.alpha
+                                    .header-autocomplete-containter
+                                      input#autocomplete-group.input-search(type="text", maxlength="70", data-tstid="TextBox_Search")
+                            .field
+                              .search-divider
+                            .field
+                              .container
+                                .field.mt20
+                                  .baseline.col2.col-md-2.col-sm-12.col-xs-12.alpha.omega
+                                    span.heading-bold.hide.js-results-container
+                                      span.js-resultsautocomplete 0
+                                      | suggestions
+                                  .baseline.col12.alpha.omega
+                                    .baseline.col2.alpha &#160;
+                                    .baseline.col10.alpha.omega
+                                      span.heading-bold.header-search-noResults.hide No suggestions found
+
+mixin infobanner
+  .info-banners-container
+    .globalposWrapper.animation-br-one.relative.animation-newsletter-signup(style="opacity: 1; z-index: 10;")
+      style(type="text/css")
+        .lt-ie9 .glyphs{
+        visibility: visible!important;
+        }
+        #newsletterBanner {
+        display: none !important;
+        }
+        .global-pos, div#newsletterBanner {
+        min-height: 50px;
+        padding: 15px 0 !important;
+        }
+        .globalposWrapper {
+        opacity: 1 !important;
+        }
+        /*unfollow fix*/
+        .line-height-reset {
+        line-height: 2em !important;
+        }
+        .info-banner-unfollow-black {
+        background: #555 !important;
+        }
+      a.hide-for-small.no-underline(href="/sg/unfollow", target="_blank")
+        .info.global-pos.info-banner-unfollow.info-banner-unfollow-black.overflow
+          .container
+            .global-pos-item
+              //- .baseline.col4.col-md-4.col-sm-4.col-xs-4.alpha.omega
+              //-   span.accordion-title.global-pos-title
+              //-     span.unfollow-logo
+              .baseline.col3.col-md-5.col-sm-5.col-xs-5.alpha.omega.align-left
+                span.condensed.uppercase.letter-spacing.color-white.pl20.visible-xl.visible-md.hidden-sm.hidden-xs #BEAUTYISOURS
+              .baseline.col6.col-md-3.col-sm-8.col-xs-8.alpha.omega.color-white.align-center
+                span.condensed.uppercase.letter-spacing.color-white.pr20.visible-xl.hidden-md.hidden-sm.hidden-xs FOR THE PURSUER OF NATURAL BEAUTY. NOT THE SUPERFICIAL.
+              .baseline.col3.col-md-5.col-sm-5.col-xs-5.alpha.omega.align-right
+                span.small.float-right.line-height-reset.color-white Read more
+        // End Global Pos
+    .field.mvcConditionalSaleBanner
+    #notifications_container
+      #notifications_errors.info.notice_error.hide
+        .container
+          .field
+            .baseline.col11.alpha.banner_message
+            .baseline.col1.omega
+              span.glyphs.icon-close.float-right
+    #newsletterBanner.info.bgcolor-off-white.animation-br-one(style="opacity: 0; z-index: 1;")
+      .field
+        .container
+          .baseline.col11.alpha.omega
+            .centered.align-center
+              span.condensed.uppercase.letter-spacing.color-beige
+                a.no-underline.color-beige(href="/sg/newsletter/signupnewsletter") SIGN UP FOR NEWSLETTER
+              span.pl10
+                | for exclusive access to sale previews, plus new arrivals, trends and promotions |
+              span.underline
+                a.underline(href="/sg/newsletter/signupnewsletter") Click here
+          .baseline.col1.omega.alpha
+            span.glyphs.icon-close.float-right.newsletter-close-icon.newsletter-close
+
+block appcontent
+  header
+    section
+      +topbar
+  main.bg-graybodybackground
+    section
+      +infobanner
+      .article
+        .article-hero
+          .baseline.col12.alpha.omega
+            .reset-lineHeight.pa0-xs
+              .heroContentModule
+                div.responsive(style="background-image: url(http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-Large-2-min.jpg);background-size: cover; min-height:390px;")
+                //- img.responsive(data-large='http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-Large-2-min.jpg', data-medium='http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-Medium-2-min.jpg', data-resize='false', data-small='http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-Small-2-min.jpg', data-xsmall='http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-XSmall-2-min.jpg', src='http://cdn-static.farfetch.com/content/UP/people_page/2015/ShockoftheNew/00-Large-2-min.jpg')
+                .hero-contentWrapper
+                  .hero-content-container
+                    .hero-content
+                      .slug.color-white
+                        | SS15 Collections
+                      h2.h3.color-white The Shock Of The New
+                      .visible-xl.visible-md.visible-sm.visible-xs.col-auto.alpha.omega
+                        a.no-underline(href='/sg/sets/women/the-shock-of-the-new-women.aspx')
+                          button.button-black.mt10
+                            span Shop women
+                            span.glyphs.icon-thinArrow.float-right
+                    .visible-xl.visible-md.visible-sm.visible-xs.col-auto.alpha.omega
+                      a.no-underline(href='/sets/men/the-shock-of-the-new-men.aspx')
+                        button.button-black.mt10
+                          span Shop men
+                          span.glyphs.icon-thinArrow.float-right
+          .clearfix
+
+      .row.max-width-xl.mtxl.ptxl
+        .small-12.medium-6.large-3.columns.mbl.hide-for-small
+          a.width-max.db.posr.no-underline(style="height: 492px;")
+            .posa.fill-parent(style="background-image: url(https://a2.muscache.com/airbnb/static/homepages/ols-df529f5834fc47471ac0ae828583e250.jpg);background-size: cover;")
+            .va-container.height-max
+              div.va-bottom
+                .color-white.bg-orange.posr.zindex1(style="padding:34px;")
+                  div.mbl
+                    strong(style="font-size:20px") #beautyisours
+                  div We believe in a world where all seven billion of us are able to surface true beauty inside #beautyisours.
+        .small-12.medium-6.large-3.columns.mbl
+          a.width-max.db.posr.no-underline(style="height: 492px;")
+            .posa.fill-parent(style="background-image: url(./static/images/Campaign2.jpg);background-size: cover;")
+            .va-container.height-max
+              div.va-middle
+                .color-white.posr.zindex1(style="padding:34px;")
+                  strong.pbxl(style="font-size:40px; line-height:1.2;")
+                    .pbxl Alice: 200g of coffee scrubs 
+
+        .small-12.medium-6.large-3.columns.mbl
+          a.width-max.db.posr.no-underline(style="height: 492px;")
+            .posa.fill-parent(style="background-image: url(./static/images/Campaign4.jpg);background-size: cover;")
+            .va-container.height-max
+              div.va-bottom
+                .color-white.bg-bluehellohair.posr.zindex1(style="padding:34px;")
+                  strong @annachristinaschwartz 
+                  div loves to start her mornings with a cup of our SMT tea #BabesDrinkTea
+                  button.button-white.mtl.border-an
+                    span Try Hello Hair Mask
+                    span.glyphs.icon-thinArrow.float-right
+        .small-12.medium-6.large-3.columns.mbl.hide-for-small
+          a.width-max.db.posr.no-underline(style="height: 492px;")
+            .posa.fill-parent(style="background-image: url(./static/images/Campaign3.jpg);background-size: cover;")
+            .va-container.height-max
+              div.va-bottom
+                .color-white.posr.zindex1(style="padding:34px;")
+                  div.mbl By April 2015, more than 2,000+ products have been delivered without a single failure
+                  div See who is satisfied
+
+      .row.max-width-xl.mtxl.ptxl
+        .small-12.large-12.columns
+          a.width-max.db.posr.no-underline(style="height: 254px;")
+            .posa.fill-parent(style="background-image: url(./static/images/Campaign5.jpg);background-size: cover;")
+            .row.max-width-xl(style="padding:34px")
+              .large-3.columns
+                img.mbm(src="./static/images/smtlogo.png")
+              .large-6.columns
+                strong.color-white.mbm(style="font-size:20px; line-height:1.2;") We believe in a world where all seven billion of us surface beauty
+              .large-3.small-12.columns
+                .va-container.height-max.width-max(style="")
+                  div.va-top
+                    .color-white.posr.zindex1
+                      button.button-white.mtm.border-an
+                        span Start a 14 days teatox
+                        span.glyphs.icon-thinArrow.float-right

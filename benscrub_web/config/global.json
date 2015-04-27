@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "benscrub"
+        }, 
+        "benscrub": {
+            "applicationId": "PtYMeA6Gc9yB5iCWYkaT9c5vngMyEzk5vIk4WWPo", 
+            "masterKey": "NbfdM0ODaJgp8HYePdF749ZBSmEcM00LRB0jQK7W"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.2"
+    }
+}
