@@ -1,0 +1,81 @@
+html(lang='en')
+head
+  meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  title Benscrub - Beauty Supplies Delivered
+  meta(content='arunaharsa', name='application-name')
+  meta(content='Beauty Supplies Delivered', name='description')
+  meta(content='Aruna Harsa', name='author')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.min.css', rel='stylesheet')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+body
+  .row
+    .small-12.columns
+      table
+        tr
+          th email
+          th account_id
+          th credits
+          //- th refer_to
+          //- th refer_by
+          //- th actions
+          th delivery info
+        each row in data
+          tr.js_results.js_row
+            td.js_col.js_email= row.email
+            td.js_col.js_account_id= row.code
+            td.js_col.js_credit_balance ?
+            //- td.js_col= row.refer_to_code
+            //- td.js_col= row.refer_by_code
+            //- td.js_col
+            //-   if !row.refer_by_code && row.refer_to_code
+            //-     a(href="/api/gojek/create/1"+row.email+"/refer_to/"+row.code, target="_blank") extend this (create a new one that refer to this)
+            //-   else
+            td.js_col.js_delivery ?
+
+  script.
+    $(document).ready(function(){
+
+      // For each row, load 
+      $('.js_results.js_row').each(function(index) {
+        var $this = $(this);
+        load_credit($this);
+        load_delivery($this);
+      });
+
+      // If row is clicked, re-load
+      $('.js_results.js_row').on('click', function(index) {
+        var $this = $(this);
+        load_credit($this);
+        load_delivery($this);
+      });
+
+      function load_delivery($row){
+        var account_id = $row.find('.js_col.js_account_id').text();
+        $row.find('.js_col.js_delivery').html('<img class="alignnone" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="" width="12" height="12">');
+        $.get("http://api.gojek.co.id/gojek/booking/history/"+account_id, function(res){
+          var html_dump = "";    
+          for (i=0; i<res.length; i++){
+            var row = res[i];
+            var address = row.addresses[0];
+            html_dump += 'customer: '+address.destinationContactName+'<br>'+'address: '+address.destinationNote+'<br>'+'status: '+row.statusBooking+'<br>------------<br>';
+          }
+          $row.find('.js_col.js_delivery').html(html_dump);
+        }).fail(function(err) {
+          console.log(err);
+        });
+      }
+
+      function load_credit($row){
+        var account_id = $row.find('.js_col.js_account_id').text();
+        var email = $row.find('.js_col.js_email').text();
+        $row.find('.js_col.js_credit_balance').html('<img class="alignnone" src="https://i1.wp.com/cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="" width="12" height="12">');
+        $.get("http://api.gojek.co.id/gojek/customer/"+account_id, function(res){
+          $row.find('.js_col.js_credit_balance').html(res.creditBalance);
+        }).fail(function(err) {
+          console.log(err);
+        });
+      }
+
+    });
