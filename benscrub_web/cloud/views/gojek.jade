@@ -19,7 +19,7 @@ body
           th credits
           //- th refer_to
           //- th refer_by
-          //- th actions
+          th actions
           th delivery info
         each row in data
           tr.js_results.js_row
@@ -28,10 +28,10 @@ body
             td.js_col.js_credit_balance ?
             //- td.js_col= row.refer_to_code
             //- td.js_col= row.refer_by_code
-            //- td.js_col
-            //-   if !row.refer_by_code && row.refer_to_code
-            //-     a(href="/api/gojek/create/1"+row.email+"/refer_to/"+row.code, target="_blank") extend this (create a new one that refer to this)
-            //-   else
+            td.js_col
+              if !row.refer_by_code && row.refer_to_code
+                a(href="/api/gojek/create/1"+row.email+"/refer_to/"+row.code, target="_blank") extend this (create a new one that refer to this)
+              else
             td.js_col.js_delivery ?
 
   script.

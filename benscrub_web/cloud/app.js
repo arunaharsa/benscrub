@@ -20,7 +20,7 @@ app.set('view options', {
 
 // - Web
 app.get('/', function(req, res) {
-  res.render('discover', {});
+  res.render('discover_benscrub', {});
 });
 
 app.get('/ig', function(req, res) {

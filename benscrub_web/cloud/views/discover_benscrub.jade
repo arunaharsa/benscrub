@@ -1,0 +1,562 @@
+extends layout_drjart
+
+
+mixin navbar
+  .header.mobile(style='width: 1240px; left: 50%; margin-left: -647px;')
+    .wrapper
+      .info_header
+        .wrapper
+          ul(style='margin-left: 0px; left: 0px;')
+            li
+              img(alt='Icon_location', src='http://us.drjart.com/assets/icon_location-ef1e3966c731b1214410cecbb011eaf9.png', style='vertical-align: middle; height: 22px; margin-top: -2px;')
+              |  INDONESIA
+            //- li
+            //-   img(alt='Icon_time', src='http://us.drjart.com/assets/icon_time-a8e68910f61097a1839f70d7a9e39817.png', style='vertical-align:middle;height:18px;margin-top: -2px;')
+            //-   span.hour_time 0
+            //-   span.blink_clock(style='color: rgb(0, 0, 0);') :
+            //-   span.minute_time 24 am
+            //- li
+            //-   img(alt='Icon_fair', src='http://us.drjart.com/assets/icon_fair-d38a32301dbf2444b88eeb7916a64383.png', style='vertical-align:middle;height:22px;margin-top: -3px;')
+            //-   |             65 °F
+      .links_header
+        .wrapper
+          ul
+            li
+              a.goto_company_btn(href='#') #BEAUTYISOURS
+            li
+              a.goto_dermatologists_btn(href='#') OUR HAPPY CUSTOMERS
+            li
+              a(href='http://drjartus.tumblr.com/', target='_blank')
+                img(alt='Icon-tumblr', src='http://us.drjart.com/assets/icon-tumblr-3664ba868257947df622f3c0372be231.png', style='height:15px;vertical-align:middle')
+              a(href='http://twitter.com/drjartus', target='_blank')
+                img(alt='Icon-twitter', src='http://us.drjart.com/assets/icon-twitter-da6849516c0667629869630184771fde.png', style='height:15px;vertical-align:middle')
+              a(href='http://facebook.com/drjartus', target='_blank')
+                img(alt='Icon-facebook', src='http://us.drjart.com/assets/icon-facebook-0be3eb7f0c2aaddd4c1e8915c6f36bef.png', style='height:15px;vertical-align:middle')
+              a(href='http://instagram.com/drjartus', target='_blank')
+                img(alt='Icon-instagram', src='http://us.drjart.com/assets/icon-instagram-8cf4f868d4a0bea7390ed4810f2f8dd4.png', style='height:15px;vertical-align:middle')
+      hr
+      .now_link
+        a(href='/')
+          | IN STOCK
+      .logo_wrapper
+        a.logo_btn(href='#')
+          img(alt='Benscrub', src='/static/images/benlogo@2x.png')
+      .products_link
+        a(href='/products')
+          | STORE
+          img(alt='Product_link', src='http://us.drjart.com/assets/product_link-287a9f07d5eeecc75b4856028107b421.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
+  script.
+      (function(){
+      $(document).ready(function(e){
+      _.delay(function(){
+      resize_call();
+      }, 400);
+      $("#back_top_btn").click(function(e){
+      e.preventDefault();[]
+      $("html, body").animate({
+      scrollTop: 0
+      });
+      });
+      $(".logo_btn").click(function(e){
+      e.preventDefault();
+      $("html, body").animate({
+      scrollTop: 0
+      })
+      });
+      });
+      $(window).smartresize(resize_call).smartresize();
+      function resize_call(){
+      var width = $(".info_header ul").width();
+      $(".info_header ul").css({
+      'margin-left': 0,
+      'left': ($(".info_header").width() / 2 - width / 2) + 'px'
+      });
+      $(".header.mobile").width($(window).width() - 40);
+      }
+      })();
+
+mixin carousel_item(z_text, z_cta_text, z_url, z_image, z_color)
+    - z_color = z_color || 'white' //default params
+    .wrapper.slidesjs-slide
+      img(src=z_image)
+      .carousel_text
+        span(style='font-size:14pt')
+          =z_text
+        br
+        span(style='font-size:12px;')
+          a(href=z_url, target='blank')
+            font(color=z_color)=z_cta_text
+
+mixin carousel
+  .size_3x2.carousel.article.product.isotope-item(data-auto-slide='true', data-duration='3000')
+    if block
+      block
+
+mixin article1x1_black(z_text, z_url)
+  .article.size_1x1.isotope-item
+    div(style="width:100%;height:100%;background-color:black")
+      div(style="color:white;padding:15px;line-height:160%; font-size:13px;")
+        p
+          =z_text
+          br
+          br
+          | Read more on how our brand has been expanding.
+          br
+          br
+          a.goto_company_btn(href=z_url, style='color:#fff')
+            span(style='font-size:12pt')
+            span(style='border-bottom:2px; solid:#fff; font-size:12px')
+              font(color='#999') → SEE MORE ABOUT OUR STORY
+
+mixin article1x1_tweet(z_text, z_url, z_tweet_url)
+  .article.size_1x1.isotope-item
+    .article_tweet
+      .date 0419
+      a(href=z_tweet_url, target='_blank')
+        .icon.twitter.mrs
+      .twitter-text
+        =z_text
+        a(href=z_url, target='_blank') ...
+      .CB
+
+mixin article2x2_instagram(z_url, z_image, z_instagram_url)
+  .article.size_2x2.isotope-item
+    .article_instagraam(data-inited='true')
+      a.link(href=z_instagram_url, target='_blank')
+        .icon.instagram2
+      .date 0419
+      .instagram_photo
+        a(href='http://benscrub.parseapp.com/drjart/ig')
+          img(src=z_image)
+
+// input 1x1 2x2 2x3 etc
+mixin article_placeholder(z_size)
+  .article.isotope-item(class='size_'+z_size)
+
+mixin product(z_size, z_url, z_image)
+  .article.isotope-item(class='size_'+z_size)
+    a(href=z_url)
+      img(src=z_image)
+    span(style='display:none') water-fuse bb cream
+
+mixin article3x2_video(z_video, z_video_image_still)
+  .article.size_3x2.isotope-item(data-inited='true')
+    div(style='background-color:black;width:100%;height:100%')
+      a.fancybox-embed(href=z_video)
+        img(width='100%', height='100%', src=z_video_image_still)
+
+
+block appcontent
+  .right_loader
+  .wrapper
+    +navbar
+    .content.isotope
+      +carousel
+        +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/733/size_3x2/contouring-2.jpg', 'black')
+        +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/733/size_3x2/contouring-2.jpg', 'black')
+        //- +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/731/size_3x2/contouring-1.jpg')
+      +article1x1_black('Benscrub is now available in Indonesia, have ready stocks and ships islandwide.', '#')
+      +article1x1_tweet('We are Benscrub, a girl-powered company on a mission to rethink beauty by selling a line of essential that celebrate realness rather than cover it up.', '#', 'http://twitter.com')
+      +article_placeholder('1x1')
+      +article2x2_instagram('#', 'http://i.imgur.com/ynhRVOI.jpg', 'http://instagram.com')
+      +article1x1_tweet('By May 2014, more than 2,000+ products have been shipped without a single failure. Happy Customers.', '#', 'http://twitter.com')
+      //- +article1x1_tweet('Had too much fun last night with frank. Frank is coffee scrub targeting dry skin, cellulite, acne, eczema and more.', '#', 'http://twitter.com')
+      +carousel
+        //- +carousel_item('', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/684/size_3x2/brunch-edit.jpg')
+        //- +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/684/size_3x2/brunch-edit.jpg')
+        //- +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/685/size_3x2/1.jpg')
+        +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/686/size_3x2/2.jpg')
+        +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/687/size_3x2/3.jpg')
+
+      .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 753px, 0px);')
+        .mailinglist(style="background: rgb(123, 0, 81);")
+          .icon(style='top:25px; left:25px')
+            img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
+          .text(style="right: 20px;")
+            p
+              | Sign up for news, sale 
+              br
+              |    notices and 
+              span(style='border-bottom:2px solid; color:#fff')  exclusive offers
+              |  from Benscrub
+          .mail_form
+            form#mailinglist_form_now(action='/mailinglists', method='post')
+              div
+                input.email_text(type='text', name='mailinglist[email]', placeholder='Enter Email Address')
+              .form-actions
+                input.mailinglist_btn(type='submit', value='CONFIRM')
+      +article_placeholder('1x1')
+      +product('1x2', '/store', 'http://10efc.http.sng01.cdn.softlayer.net/shops/benscrub/products/150412170534_hellohairisl_zoom.png')
+      +article2x2_instagram('#', 'http://i.imgur.com/aLRwbC7.jpg', 'http://instagram.com')
+      +article1x1_tweet(' Begin your journey to healthier, longer and stronger locks with Hello Hair. The treatment will bring your tired and stressed out tresses back to life. 🙌', '#', 'http://twitter.com')
+      +article_placeholder('1x2')
+      +article3x2_video('/embed?address=https://www.youtube.com/watch?v=a3wwCPXD-TI', 'http://i.imgur.com/oYrWg8c.jpg')
+      +article_placeholder('1x1')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/437/original/36-product.png')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/761/original/night.png')
+      +carousel
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/ExjH0Q2.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/riaLB7F.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/575/size_3x2/1.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/566/size_3x2/2.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/567/size_3x2/3.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/568/size_3x2/4.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/569/size_3x2/5.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/570/size_3x2/6.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/571/size_3x2/7.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/572/size_3x2/8.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/573/size_3x2/9.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/574/size_3x2/10.jpg')
+      +article_placeholder('1x1')
+      +article1x1_tweet('Pump up the Vitamin E in your diet with broccoli, spinach + almonds — it helps protect against sun damage and aging. #beautytips', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/660/thumb/11142117_423323284495962_1273762770_n.jpg', 'http://instagram.com')
+      +article1x1_tweet('Just 30 minutes for glowy, bright, healthy skin. Give our Brightening Infusion Hydrogel Mask a go: ', '#', 'http://twitter.com')
+      +article_placeholder('1x1')
+      +article1x1_tweet('Coral powder, sage, + tea tree extract: The expert skincare ingredients in our 2-step Blackhead Patch. Shop here: ', '#', 'http://twitter.com')
+      +article_placeholder('1x1')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/657/thumb/10809811_462025390622023_784226847_n.jpg', 'http://instagram.com')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/435/original/34-product.png')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/763/original/cera-oilbalm.png')
+      +article1x1_tweet('You asked, we delivered. We’ve introduced a new shade of our #Premium #BBCream, just for you: ', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/656/thumb/10881885_458196721005825_727635823_n.jpg', 'http://instagram.com')
+      +carousel
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/766/size_3x2/interview-carousel.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/601/size_3x2/interview-carousel-18.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/554/size_3x2/07.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/553/size_3x2/06.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/528/size_3x2/05.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/529/size_3x2/04.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/522/size_3x2/03.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/521/size_3x2/02.jpg')
+        +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/520/size_3x2/01.jpg')
+      +product('1x2', '/store', 'http://i.imgur.com/4FCgXzG.jpg')
+      +article1x1_tweet('Whipping up a #DIY green smoothie today, for a much-needed #Tuesday energy boost: ', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/6r2Vh45.jpg', "http://instagram.com")
+      +article_placeholder('1x1')
+      +article_placeholder('2x1')
+      +article_placeholder('1x1')
+      +article1x1_tweet('#mondays RT @IntoTheGloss: Who needs sleep when there are makeup tips for exhausted people? ', '#', 'http://t')
+      +article1x1_tweet('Highlight, neutralize and bronze your way to a sculpted look with our BB Mate Contouring Kit: ', '#', 'http://t')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/754/original/dermaclear.png')
+      +article1x1_tweet('Spotted: Our amazing sleeping masks —> RT @allure_magazine: Put these on tonight, wake up more glow-y. ', '#', 'http://t')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/430/original/26-product.png')
+      +article2x2_instagram('#','https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/654/thumb/11142146_421644267994959_1123387962_n.jpg', "http://instagram.com")
+      +carousel
+        +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/590/size_3x2/4.jpg')
+        +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/591/size_3x2/5.jpg')
+      +article_placeholder('2x1')
+      +article1x1_tweet('Take the day off with our #Dermaclear Micro Water, available here: ', '#', 'http://t')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/757/original/waterfuse.png')
+      +article_placeholder('1x1');
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/653/thumb/11142910_1378847952442834_1998640305_n.jpg', 'http://instagram.com')
+      +article1x1_tweet('So key for good skin. RT @voguemagazine: 6 new tech breakthroughs to get you a better night’s sleep: ', '#', 'http://t')
+      +article2x2_instagram('#','https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/652/thumb/11117036_932570083460112_453470780_n.jpg', 'http://instagram.com')
+      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/431/original/27-product.png')
+      +article_placeholder('1x2');
+      +article_placeholder('1x1'); 
+      +article1x1_tweet('Golden light + the #Manhattan skyline make for an ideal #Sunday:', '#', 'http://twitter.com')
+      +article1x1_tweet('Embracing the sunshine + upping our #SPF to 30, via our bestselling BB Bounce Beauty Balm. Get yours here: ', '#', 'http://twitter.com')
+
+      +carousel
+        +carousel_item('', ' → CELEBRATING DR. JARTS K-BEAUTY 10TH ANNIVERSARY EXHIBITION AND POP-UP SHOP', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/504/size_3x2/carousel-1107-02.jpg', 'black')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/508/size_3x2/carousel-1107-01.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/506/size_3x2/carousel-1107-3.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/511/size_3x2/01.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/512/size_3x2/02.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/513/size_3x2/03.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/515/size_3x2/04.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/516/size_3x2/05.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/517/size_3x2/06.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/514/size_3x2/07.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/518/size_3x2/08.jpg')
+        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/519/size_3x2/09.jpg')
+      +article1x1_tweet('Get on board the #KBeauty bandwagon! @YahooBeauty, on how brands like #DrJart are innovating skincare: ', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/650/thumb/11055718_434118010084257_779784761_n.jpg', 'http://instagram.com')
+      +article3x2_video('/embed?address=https://www.youtube.com/watch?v=7nk5T5HJYTc', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/533/original/video.png')
+      .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 8283px, 0px);')
+        .mailinglist
+          .icon(style='top:25px; left:25px')
+            img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
+          .text
+            p
+              | Sign up for news, sale 
+              br
+              |    notices and 
+              span(style='border-bottom:2px; solid; color:#fff')  exclusive offers
+              |  from Benscrub
+          .mail_form
+            form#mailinglist_form_now(action='/mailinglists', method='post')
+              div
+                input.email_text(type='text', name='mailinglist[email]', placeholder='Enter Email Address')
+              .form-actions
+                input.mailinglist_btn(type='submit', value='CONFIRM')
+      +article1x1_tweet('Making your own nut milk: Delicious, easy, and 100% natural. Solid recipe, @intothegloss: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Take your routine on the go w/ our “Dynamic Duo” kit, ft. our Premium #BBCream + Dermaclear Micro Water. Get it here: ', '#', 'http://twitter.com')
+      +article_placeholder('2x1')
+      +article2x2_instagram('#' ,'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/651/thumb/11078716_1660073724221172_722345837_n.jpg', 'http://instagram.com')      
+      +article_placeholder('2x1')
+      +article1x1_tweet('“After 20 minutes…my skin feels soft, smooth, firmer.” @voguemagazine’s Marina Rust on our Prescriptment Masks: ', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/649/thumb/11055898_387940591398301_215708076_n.jpg', 'http://instagram.com')
+      +article1x1_tweet('Shoutout to the #Ceramides! RT @allure_magazine: Chapping, rawness, & stinging are the bodys ways of sending an SOS: ', '#', 'http://twitter.com')
+      +carousel
+        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/478/size_3x2/05.jpg')
+        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/477/size_3x2/04.jpg')
+        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/476/size_3x2/03.jpg')
+        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/479/size_3x2/06.jpg')
+        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/481/size_3x2/08.jpg')
+      +article_placeholder('1xx')
+    // contents
+    #load_more_area(style='width: 989px;')
+      div(style='width:474px;height:42px;margin: 0 auto;')
+        div(style='padding-top:85px')
+          a.load_more_btn(href='#')
+            img(alt='Load_more_btn', src='http://us.drjart.com/assets/load_more_btn-a0a7753769cfd77b0cc9b45e559c207e.png')
+    script.
+      $(document).ready(function(e){
+      TIIA.views.loadmore_view(1);
+      });
+  // hr#company
+  // .content_company
+  //   #history_carousel_wrapper
+  //     #here_is_our_story
+  //       img(alt='Here_is_our_story', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/1/original/here_is_our_story.png')
+  //     #history_carousel(style='overflow: hidden;')
+  //           .wrapper.slidesjs-slide(data-year='2004', slidesjs-index='0', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 10; -webkit-backface-visibility: hidden;')
+  //             img(alt='2004_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/2/carousel/2004_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2004
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | JinWook Lee and Dr. Jung launch their first brand 'Dermaster’ exclusively at dermatological clinics.
+  //           .wrapper.slidesjs-slide(data-year='2005', slidesjs-index='1', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2005_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/3/carousel/2005_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2005
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | JinWook Lee establishes Have&Be Inc. and launches 
+  //                 | the ﬁrst Dr.Jart skincare line for mass market, with 
+  //                 br
+  //                 | Dr. Jung leading the clinical consultation group of 21
+  //                 | dermatologists.
+  //           .wrapper.slidesjs-slide(data-year='2006', slidesjs-index='2', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2006_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/4/carousel/2006_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2006
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | The ﬁrst Dr. Jart BB cream is a huge success. Dr. Jart
+  //                 | expands it's cosmetic line and starts exporting internationally.
+  //           .wrapper.slidesjs-slide(data-year='2008', slidesjs-index='3', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2008_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/38/carousel/2008_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2008
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | Dr. Jart obtains USFDA certiﬁcation and launches at
+  //                 | Takashimaya in New York City.
+  //           .wrapper.slidesjs-slide(data-year='2009', slidesjs-index='4', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2009_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/37/carousel/2009_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2009
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | Dr. Jart earns the KFDA Eco-Friendly Company Award
+  //                 | and develops several new lines targeting dryness,
+  //                 | acne-prone skin, pore issues, aging and men’s skin.
+  //           .wrapper.slidesjs-slide(data-year='2010', slidesjs-index='5', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2010_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/39/carousel/2010_carousel.png')
+  //             .text
+  //               h4(style='margin-top:-10px') 2010
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | Dr. Jart launches it's legendary BB creams at Sephora
+  //                 | USA and become available in Japan. The V7 Line is introduced in Korea.
+  //           .wrapper.slidesjs-slide(data-year='2012', slidesjs-index='6', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2012_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/18/original/2012_carousel.png ')
+  //             .text
+  //               h4(style='margin-top:-10px') 2012
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | Dr.Jart+ launches at Boots UK and Ireland. Dr. Jart unveils The New Cellwake line, an advanced anti-aging line with Its key ingredient 'SC-210 TM'.
+  //           .wrapper.slidesjs-slide(data-year='2013', slidesjs-index='7', style='position: absolute; top: 0px; left: 0px; width: 100%; z-index: 0; display: none; -webkit-backface-visibility: hidden;')
+  //             img(alt='2013_carousel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/44/carousel/2013_carousel.png')
+  //             .text
+  //               h4(style='margin-top:-10px') 2013
+  //               p(style="line-height:18px; font-family: 'Apercu Bold';")
+  //                 | Dr. Jart launches full lines of all products at Henri Bendel, an upscale high-end department store in New York City.
+  //       a.slidesjs-previous.slidesjs-navigation(href='#', title='Previous') Previous
+  //       a.slidesjs-next.slidesjs-navigation(href='#', title='Next') Next
+  //     .pagination(style='width:440px')
+  //       ul
+  //         li.active(data-slidejs-index='0')
+  //           a(href='#')
+  //             span.change_year_btn(data-year='2004', style="font-family:'Apercu Bold'; ") 2004
+  //         li(data-slidejs-index='1')
+  //           span.change_year_btn(data-year='2005', style="font-family:'Apercu Bold'; ") 2005
+  //         li(data-slidejs-index='2')
+  //           span.change_year_btn(data-year='2006', style="font-family:'Apercu Bold'; ") 2006
+  //         li(data-slidejs-index='3')
+  //           span.change_year_btn(data-year='2008', style="font-family:'Apercu Bold'; ") 2008
+  //         li(data-slidejs-index='4')
+  //           span.change_year_btn(data-year='2009', style="font-family:'Apercu Bold'; ") 2009
+  //         li(data-slidejs-index='5')
+  //           span.change_year_btn(data-year='2010', style="font-family:'Apercu Bold'; ") 2010
+  //         li(data-slidejs-index='6')
+  //           span.change_year_btn(data-year='2012', style="font-family:'Apercu Bold'; ") 2012
+  //         li.last(data-slidejs-index='7')
+  //           span.change_year_btn(data-year='2013', style="font-family:'Apercu Bold';") 2013
+  //   #how_all_it_began_wrapper
+  //     #how_all_it_began
+  //       img(alt='How_it_all_began', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/19/original/how_it_all_began.png')
+  //     .wrapper
+  //       img(alt='How_it_all_began_image', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/41/carousel/how_it_all_began_image.png')
+  //     .desc
+  //       .desc_wrapper
+  //         span(style="font-size:35px; font-family: 'Apercu Bold'; color:#ffd200;")
+  //           | Mr. Lee meets Dr. Jung
+  //         p(style='line-height:18px; width:450px;')
+  //           br
+  //           | Dr. SungJae Jung, a soft spoken and driven young doctor, has always had a passion for innovation and a genuine care for the well-being of his patients. In 2001, he was running his own clinic in Seoul, Korea after earning his M.D and becoming a certified dermatologist. He spent each day creating and testing for the safest and most effective skin care formulas for severe skin issues.
+  //     .desc
+  //       .desc_wrapper
+  //         span(style='font-size:35px; color:#ffffff;')
+  //           b
+  //         p(style='line-height:18px; width:450px;')
+  //           br
+  //           | JinWook Lee, a close family friend of Dr. Jung and young entrepreneur, was impressed by Dr. Jung's spirit and expertise, and ventured to bring Dr. Jung's formulas out of the clinic, into the mainstream. JinWook worked tirelessly between Dr. Jung's clinic, laboratories, and personal advisors to develop a new skin care company.
+  //           br
+  //           br
+  //           |           After 3 years of development, in 2004, 
+  //           br
+  //           |           Dr. Jung and JinWook Lee launched Dr. Jart+.
+  //     .CB
+  //   #our_dermatologists_wrapper
+  //     #our_dermatologists
+  //       img(alt='Our_dermatologists', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/11/original/our_dermatologists.png')
+  //     .wrapper
+  //       img(alt='Dermatologists_img', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/12/original/dermatologists_img.png ')
+  //     .main_dr
+  //       .image
+  //         img(alt='Dr_jr', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/25/original/dr_jr.png')
+  //       .dr_desc
+  //         .desc_wrapper(style='background-color:#516494;')
+  //           h4 Dr. SungJae Jung
+  //           p
+  //             | Certified Dermatologist,  
+  //             br
+  //             |           Chief Advisor of Dr. Jart 
+  //             br
+  //             |           Dermatological 
+  //             br
+  //             |           Consulting Group 
+  //             br
+  //             br
+  //             | Patented 8 new inventions including curing aids and tools used in laser therapy.
+  //       .CB
+  //     .desc
+  //       .desc_wrapper
+  //         span(style="font-size:35px; font-family: 'Apercu Bold'; color:#516494;")
+  //           | Science of Skincare
+  //         p(style='line-height:18px;')
+  //           br
+  //           | Dr. Jart believes in the true spirit of science; this exploration continues to expose new challenges to the field of skin care. Dr. Jart works closely with a group of 15 dermatologists from 15 different clinics. Each at the forefront of dermatological research, all work privately with patients as well as in collaboration at research universities.
+  //     .CB
+  //     .dr_list.size_2x1
+  //       .dr_wrapper
+  //         h4(style='margin-bottom:5px;')
+  //           | LIST OF DR. JART DERMATOLOGICAL
+  //           br
+  //           |           CONSULTING GROUP
+  //         .column(style='width:211px')
+  //           | Dr. JaeYong Ban 
+  //           br
+  //           |           Dr. JongIl Park 
+  //           br
+  //           |           Dr. JunHyeob Kim 
+  //           br
+  //           |           Dr. JaeHong Sim 
+  //           br
+  //           |           Dr. MyungJoo Kim 
+  //           br
+  //           |           Dr. DongGyu Hwang 
+  //           br
+  //           |           Dr. HyeSeok Kwon
+  //         .column(style='width:211px')
+  //           | Dr. HoonYoung Jang 
+  //           br
+  //           |           Dr. KwangBeom Ahn 
+  //           br
+  //           |           Dr. ByungHwan Jeon 
+  //           br
+  //           |           Dr. JeongHoon Jang 
+  //           br
+  //           |           Dr. JoongYeol Kim 
+  //           br
+  //           |           Dr. CheolWook Kwon 
+  //           br
+  //           |           Dr. SookHyun Bang
+  //       .CB
+  //   #distribution_channel_wrapper
+  //     #distribution_channel
+  //       img(alt='Distribution_channel', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/14/original/distribution_channel.png ')
+  //     .wrapper
+  //       img(alt='Map', src='https://s3.amazonaws.com/drjartus-production-s3/public/system/storypictures/photos/21/carousel/map.png')
+  //     .desc(style="font-family:'Apercu Bold'; margin-left:15px; line-height:18px;")
+  //       | Dr. Jart+ distributes cosmetic products all over the world, 
+  //       br
+  //       |       across 4 continents in 15 countries. Find us at a store near you 
+  //       br
+  //       |  or visit our products page. 
+  //       br
+  //       br
+  //       br
+  //       br
+  //       br
+  // .back_top
+  //   a#back_top_btn(href='#')
+  //     img(alt='Back_top_btn', src='http://us.drjart.com/assets/back_top_btn-6e3b42fb1e2a0271c4ed63ee228a6ede.png')
+  // .footer(style='width: 984px;')
+  //   .wrapper.clear
+  //     .footer_content
+  //       a.logo_btn(href='#')
+  //         img(alt='Drjart', src='http://us.drjart.com/assets/drjart.png')
+  //     .gettoknowus.footer_content
+  //       h4
+  //         | Dr. JART US OFFICE
+  //       | 54 West 21st Street, Suite 1006
+  //       br
+  //       | New York, NY 10010
+  //       br
+  //       br
+  //       h4
+  //         | MEDIA INQUIRES
+  //         br
+  //       |         media@drjart.com
+  //       br
+  //       br
+  //       a(href='http://drjartus.tumblr.com/tagged/press', target='_blank')
+  //         | PRESS RELEASES 
+  //         img(alt='Press_release', src='http://us.drjart.com/assets/press_release.png', style='vertical-align:middle')
+  //       br
+  //       br
+  //     .getsocial.footer_content
+  //       h4
+  //         | Dr. JART HEADQUARTERS
+  //       | Seoul Gangnam-gu Yeoksam-dong
+  //       br
+  //       | M Space Building Have&Be
+  //       h4
+  //         p.small
+  //           br
+  //           a(href='http://www.drjart.com', target='_blank')
+  //             | VISIT OUR KOREAN SITE 
+  //             img(alt='Press_release', src='http://us.drjart.com/assets/press_release.png', style='vertical-align:middle')
+  //           br
+  //           br
+  //     .mailinglist_footer.footer_content
+  //       h4
+  //         | SIGN UP FOR NEWS, SALE
+  //         br
+  //         |         NOTICES, AND EXCLUSIVE 
+  //         br
+  //         |         OFFERS
+  //       .mail_form
+  //         form#mailinglist_form_footer(action='/mailinglists', method='post')
+  //           .controls
+  //             input.email_text(type='text', name='mailinglist[email]', placeholder='ENTER EMAIL ADDRESS')
+  //           .form-actions
+  //             input.mailinglist_btn(type='submit', value='→ CONFIRM')
