@@ -109,6 +109,21 @@ app.get('/api/gojek/create/:email', function(req, res) {
   });
 });
 
+app.get('/api/gojek/hide/:objectId', function(req, res) {
+  var GojekAccount = Parse.Object.extend("gojek_account");
+  var query = new Parse.Query(GojekAccount);
+  query.get(req.params.objectId, {
+    success: function(gojekAccount) {
+      gojekAccount.set("hide", true);
+      gojekAccount.save(null, {
+        success: function(gojekAccount) {
+          res.send(gojekAccount);
+        }
+      });
+    }
+  });
+});
+
 app.get('/api/gojek/:account_id/refer_to/:another_account_id', function(req, res) {
   refer_account(req.params.account_id, req.params.parse_id, req.params.another_account_id, req.params.another_parse_id, function(response){
     res.send(response);
