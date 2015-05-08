@@ -32,6 +32,17 @@ body
               if !row.refer_by_code && row.refer_to_code
                 a(href="/api/gojek/create/1"+row.email+"/refer_to/"+row.code, target="_blank") extend this (create a new one that refer to this)
               else
+              - var partName = row.email.split("-")[0]
+              - var partCounter = row.email.split("-")[1]
+              if partCounter
+                - var newEmail = partName + "-" + (parseInt(partCounter)+1) +"@mailinator.com"
+              else
+                - var newEmail = partName + 1 + "@mailinator.com"
+              //- p= newEmail
+              if !row.refer_by_code && row.refer_to_code
+                a(href="/api/gojek/create/"+newEmail+"/refer_to/"+row.code, target="_blank") extend this (create a new one that refer to this)
+              else
+                a(href="/api/gojek/hide/"+row.objectId, target="_blank", style="color:green") done
             td.js_col.js_delivery ?
 
   script.
