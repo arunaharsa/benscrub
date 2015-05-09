@@ -42,8 +42,8 @@ mixin navbar
         a.logo_btn(href='#')
           img(alt='Benscrub', src='/static/images/benlogo@2x.png')
       .products_link
-        a(href='/products')
-          | STORE
+        a(href='http://www.benscrub.com/products/category/all')
+          | STORE&nbsp;
           img(alt='Product_link', src='http://us.drjart.com/assets/product_link-287a9f07d5eeecc75b4856028107b421.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
   script.
       (function(){
@@ -100,30 +100,31 @@ mixin article1x1_black(z_text, z_url)
           =z_text
           br
           br
-          | Read more on how our brand has been expanding.
+          | Read on how our brand has been expanding.
           br
           br
           a.goto_company_btn(href=z_url, style='color:#fff')
             span(style='font-size:12pt')
             span(style='border-bottom:2px; solid:#fff; font-size:12px')
-              font(color='#999') → SEE MORE ABOUT OUR STORY
+              font(color='#999') → READ OUR STORY
 
 mixin article1x1_tweet(z_text, z_url, z_tweet_url)
   .article.size_1x1.isotope-item
     .article_tweet
       .date 0419
       a(href=z_tweet_url, target='_blank')
-        .icon.twitter.mrs
+        .icon.tile-icon.icon_twitter_outline
       .twitter-text
         =z_text
-        a(href=z_url, target='_blank') ...
+        //- a(href=z_url, target='_blank') ...
       .CB
 
 mixin article2x2_instagram(z_url, z_image, z_instagram_url)
   .article.size_2x2.isotope-item
     .article_instagraam(data-inited='true')
       a.link(href=z_instagram_url, target='_blank')
-        .icon.instagram2
+        //- .icon.instagram2
+        .icon.tile-icon2.icon_instagram
       .date 0419
       .instagram_photo
         a(href='http://benscrub.parseapp.com/drjart/ig')
@@ -152,21 +153,23 @@ block appcontent
     +navbar
     .content.isotope
       +carousel
+        //- +carousel_item('', ' → CELEBRATING DR. JARTS K-BEAUTY 10TH ANNIVERSARY EXHIBITION AND POP-UP SHOP', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/504/size_3x2/carousel-1107-02.jpg', 'black')
         +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/733/size_3x2/contouring-2.jpg', 'black')
         +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/733/size_3x2/contouring-2.jpg', 'black')
         //- +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/731/size_3x2/contouring-1.jpg')
       +article1x1_black('Benscrub is now available in Indonesia, have ready stocks and ships islandwide.', '#')
-      +article1x1_tweet('We are Benscrub, a girl-powered company on a mission to rethink beauty by selling a line of essential that celebrate realness rather than cover it up.', '#', 'http://twitter.com')
+      +article1x1_tweet('We\'re Benscrub, a girl-powered company on a mission to rethink beauty by selling a line of essential that celebrate realness rather than cover it up', '#', 'http://twitter.com')
       +article_placeholder('1x1')
       +article2x2_instagram('#', 'http://i.imgur.com/ynhRVOI.jpg', 'http://instagram.com')
-      +article1x1_tweet('By May 2014, more than 2,000+ products have been shipped without a single failure. Happy Customers.', '#', 'http://twitter.com')
+      +article1x1_tweet('By May 2014, more than 2,000+ products have been shipped without a single failure. REAL Happy Customers.', '#', 'http://twitter.com')
       //- +article1x1_tweet('Had too much fun last night with frank. Frank is coffee scrub targeting dry skin, cellulite, acne, eczema and more.', '#', 'http://twitter.com')
       +carousel
         //- +carousel_item('', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/684/size_3x2/brunch-edit.jpg')
         //- +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/684/size_3x2/brunch-edit.jpg')
         //- +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/685/size_3x2/1.jpg')
-        +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/686/size_3x2/2.jpg')
-        +carousel_item('Brunch with Dr. Jart at the Standard Highline, Empire Suite', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/687/size_3x2/3.jpg')
+        //- +carousel_item('', ' → READ THROUGH THE EXPERIENCE', '#', 'http://i.imgur.com/IReesmX.jpg')
+        +carousel_item('Eyes Lips Nose', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/686/size_3x2/2.jpg')
+        +carousel_item('Eyes Lips Nose', ' → READ THROUGH THE EXPERIENCE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/687/size_3x2/3.jpg')
 
       .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 753px, 0px);')
         .mailinglist(style="background: rgb(123, 0, 81);")
@@ -174,9 +177,7 @@ block appcontent
             img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
           .text(style="right: 20px;")
             p
-              | Sign up for news, sale 
-              br
-              |    notices and 
+              | Sign up for news, sale notices and 
               span(style='border-bottom:2px solid; color:#fff')  exclusive offers
               |  from Benscrub
           .mail_form
@@ -190,35 +191,35 @@ block appcontent
       +article2x2_instagram('#', 'http://i.imgur.com/aLRwbC7.jpg', 'http://instagram.com')
       +article1x1_tweet(' Begin your journey to healthier, longer and stronger locks with Hello Hair. The treatment will bring your tired and stressed out tresses back to life. 🙌', '#', 'http://twitter.com')
       +article_placeholder('1x2')
-      +article3x2_video('/embed?address=https://www.youtube.com/watch?v=a3wwCPXD-TI', 'http://i.imgur.com/oYrWg8c.jpg')
+      +article3x2_video('/embed?address=https://www.youtube.com/watch?v=a3wwCPXD-TI', 'http://i.imgur.com/xWGXowT.jpg')
       +article_placeholder('1x1')
-      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/437/original/36-product.png')
-      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/761/original/night.png')
+      +product('1x2', '/store', 'http://i.imgur.com/1RNRGye.png')
+      +product('1x2', '/store', 'http://i.imgur.com/4ihWgee.png')
       +carousel
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/ExjH0Q2.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/riaLB7F.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/575/size_3x2/1.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/566/size_3x2/2.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/567/size_3x2/3.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/568/size_3x2/4.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/569/size_3x2/5.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/570/size_3x2/6.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/571/size_3x2/7.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/572/size_3x2/8.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/573/size_3x2/9.jpg')
-        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/574/size_3x2/10.jpg')
+        +carousel_item('@alicenorin loves it! He makes her skin soft and flawless!', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/7FHzbM4.png')
+        +carousel_item('Nadia Syakieb’s glowing skin after she ordered Frank Body Scrub from @benscrub', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/iMTPhEe.png')
+        +carousel_item('@claudianovira and @kethagustine, two sisters who have enjoyed scrubbing their body with coffee', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/KDBs1yV.png')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/566/size_3x2/2.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/567/size_3x2/3.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/568/size_3x2/4.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/569/size_3x2/5.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/570/size_3x2/6.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/571/size_3x2/7.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/572/size_3x2/8.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/573/size_3x2/9.jpg')
+        //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/574/size_3x2/10.jpg')
       +article_placeholder('1x1')
       +article1x1_tweet('Pump up the Vitamin E in your diet with broccoli, spinach + almonds — it helps protect against sun damage and aging. #beautytips', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/660/thumb/11142117_423323284495962_1273762770_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/w3YDk69.png', 'http://instagram.com')
       +article1x1_tweet('Just 30 minutes for glowy, bright, healthy skin. Give our Brightening Infusion Hydrogel Mask a go: ', '#', 'http://twitter.com')
       +article_placeholder('1x1')
       +article1x1_tweet('Coral powder, sage, + tea tree extract: The expert skincare ingredients in our 2-step Blackhead Patch. Shop here: ', '#', 'http://twitter.com')
       +article_placeholder('1x1')
       +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/657/thumb/10809811_462025390622023_784226847_n.jpg', 'http://instagram.com')
-      +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/435/original/34-product.png')
       +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/763/original/cera-oilbalm.png')
+      +product('1x2', '/store', 'http://i.imgur.com/iRyv6kL.png')
       +article1x1_tweet('You asked, we delivered. We’ve introduced a new shade of our #Premium #BBCream, just for you: ', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/656/thumb/10881885_458196721005825_727635823_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/zduMNRJ.png', 'http://instagram.com')
       +carousel
         +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/766/size_3x2/interview-carousel.jpg')
         +carousel_item('', '→   FULL  INTERVIEW WITH SHARON RADISCH', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/601/size_3x2/interview-carousel-18.jpg')
@@ -242,6 +243,8 @@ block appcontent
       +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/430/original/26-product.png')
       +article2x2_instagram('#','https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/654/thumb/11142146_421644267994959_1123387962_n.jpg', "http://instagram.com")
       +carousel
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/ExjH0Q2.jpg')
+        +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/riaLB7F.jpg')
         +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/590/size_3x2/4.jpg')
         +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/591/size_3x2/5.jpg')
       +article_placeholder('2x1')
@@ -279,9 +282,7 @@ block appcontent
             img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
           .text
             p
-              | Sign up for news, sale 
-              br
-              |    notices and 
+              | Sign up for news, sale notices and 
               span(style='border-bottom:2px; solid; color:#fff')  exclusive offers
               |  from Benscrub
           .mail_form

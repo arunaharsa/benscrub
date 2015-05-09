@@ -8,22 +8,28 @@ head
   meta(content='Beauty Supplies Delivered', name='description')
   meta(content='Aruna Harsa', name='author')
 
-  script(type='text/javascript').
-    WebFontConfig = { fontdeck: { id: '55728' } };
-    (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-    })();
+  //- script(type='text/javascript').
+  //-   WebFontConfig = { fontdeck: { id: '55728' } };
+  //-   (function() {
+  //-   var wf = document.createElement('script');
+  //-   wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+  //-   '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+  //-   wf.type = 'text/javascript';
+  //-   wf.async = 'true';
+  //-   var s = document.getElementsByTagName('script')[0];
+  //-   s.parentNode.insertBefore(wf, s);
+  //-   })();
 
   link(href='https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/5.5.1/css/foundation.min.css', rel='stylesheet')
   link(href='http://us.drjart.com/assets/application-0aa7ea730575959875cde472d1768595.css', rel='stylesheet')
   link(href='/static/css/util.css', rel='stylesheet')
+  link(href='/static/css/airbnb-glyphs.css', rel='stylesheet')
   link(href='/static/css/app_drjart.css', rel='stylesheet')
+  style(type='text/css')
+    @font-face{font-family:'airbnb-glyphs';src:url("https://a1.muscache.com/airbnb/myairbnb/assets/airbnb-glyphs-5582cce49625ef24bc391c8f2c6d8603.woff") format("woff");font-weight:bold;font-style:normal}
+    @font-face{font-family:'AtlasGroteskBold';src:url("https://d2r3yqi5wwm1w7.cloudfront.net/assets/AtlasGrotesk-Bold-Web-deb20df428722236bcd08870fc56e3a8.woff") format("woff");font-weight:bold;font-style:normal}
+    @font-face{font-family:'AtlasTypewriterRegular';src:url("https://d2r3yqi5wwm1w7.cloudfront.net/assets/AtlasTypewriter-Regular-Web-8d0e6e7022c4d5f755151acc3e85e004.woff") format("woff");font-weight:normal;font-style:normal}
+    @font-face{font-family:'AtlasTypewriterMedium';src:url("https://d2r3yqi5wwm1w7.cloudfront.net/assets/AtlasTypewriter-Medium-Web-0e770d8968f22b388555c5e08651a3cc.woff") format("woff");font-weight:bold;font-style:normal}
   script(src='http://us.drjart.com/assets/application-a953fc69cc1b4422687fcb6160232678.js')
   script(type='text/javascript').
     var ua = navigator.userAgent;

@@ -116,7 +116,7 @@ mixin article1x1_tweet(z_text, z_url, z_tweet_url)
         .icon.twitter.mrs
       .twitter-text
         =z_text
-        a(href=z_url, target='_blank') ...
+        //- a(href=z_url, target='_blank') ...
       .CB
 
 mixin article2x2_instagram(z_text, z_url, z_image, z_instagram_url)
@@ -175,11 +175,9 @@ block appcontent
             img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
           .text(style="right: 20px;")
             p
-              | Sign up for news, sale 
-              br
-              |    notices and 
+              | Sign up for news, sale notices and 
               span(style='border-bottom:2px solid; color:#fff')  exclusive offers
-              |  from Dr.Jart +
+              |  from Benscrub
           .mail_form
             form#mailinglist_form_now(action='/mailinglists', method='post')
               div
@@ -276,11 +274,9 @@ block appcontent
             img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
           .text
             p
-              | Sign up for news, sale 
-              br
-              |    notices and 
+              | Sign up for news, sale notices and 
               span(style='border-bottom:2px; solid; color:#fff')  exclusive offers
-              |  from Dr.Jart +
+              |  from Benscrub
           .mail_form
             form#mailinglist_form_now(action='/mailinglists', method='post')
               div

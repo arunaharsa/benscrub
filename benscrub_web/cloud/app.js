@@ -23,6 +23,14 @@ app.get('/', function(req, res) {
   res.render('discover_benscrub', {});
 });
 
+app.get('/farfetch', function(req, res) {
+  res.render('discover', {});
+});
+
+app.get('/airbnb-glyph', function(req, res) {
+  res.render('airbnb-glyph', {});
+});
+
 app.get('/ig', function(req, res) {
   ig.getRecentMediaByUser(66, {"count":20}).then(
     function(httpResponse) {
