@@ -42,7 +42,7 @@ mixin navbar
         a.logo_btn(href='#')
           img(alt='Benscrub', src='/static/images/benlogo@2x.png')
       .products_link
-        a(href='http://www.benscrub.com/products/category/all')
+        a(href='http://www.benscrub.com/products/all')
           | STORE&nbsp;
           img(alt='Product_link', src='http://us.drjart.com/assets/product_link-287a9f07d5eeecc75b4856028107b421.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
   script.
@@ -106,7 +106,7 @@ mixin article1x1_black(z_text, z_url)
           a.goto_company_btn(href=z_url, style='color:#fff')
             span(style='font-size:12pt')
             span(style='border-bottom:2px; solid:#fff; font-size:12px')
-              font(color='#999') → READ OUR STORY
+              font(color='#999') → SEE OUR STORY
 
 mixin article1x1_tweet(z_text, z_url, z_tweet_url)
   .article.size_1x1.isotope-item
@@ -153,9 +153,9 @@ block appcontent
     +navbar
     .content.isotope
       +carousel      
-        +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'http://i.imgur.com/ts3NisB.png', 'white')
-        +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'http://i.imgur.com/6zKnlSd.png', 'white')
-        +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'http://i.imgur.com/Aje77yX.png', 'white')
+        +carousel_item('', ' → SEE HOW TO', '#', 'http://i.imgur.com/ts3NisB.png', 'black')
+        +carousel_item('', ' → SEE HAPPY CUSTOMERS', '#', 'http://i.imgur.com/UQX7CtW.png', 'white')
+        +carousel_item('', ' → MAKE. BELIEVE.', '#', 'http://i.imgur.com/0iwn9OK.png', 'black')
         //- +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/520/size_3x2/01.jpg', 'white')
         //- +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/511/size_3x2/01.jpg', 'white')
         //- +carousel_item('', ' → SEE THE CHANGE HERE', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/733/size_3x2/contouring-2.jpg', 'black')
@@ -205,7 +205,7 @@ block appcontent
         +carousel_item('@alicenorin loves it! He makes her skin soft and flawless!', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/7FHzbM4.png')
         +carousel_item('thank you @benscrub, i love all of your products', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/Z5Wrfxa.png')
         +carousel_item('@claudianovira and @kethagustine, two sisters who have enjoyed scrubbing their body with coffee', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/KDBs1yV.png')
-        +carousel_item('', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/Aje77yX.png')
+        +carousel_item('', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/UQX7CtW.png')
         //- +carousel_item('Nadia Syakieb’s glowing skin after she ordered Frank Body Scrub from @benscrub', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/iMTPhEe.png')
         +carousel_item('This is how @arieltatum spent her weekends. Getting dirty with Frank, and she loved it', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/xnEW5VS.png')
         //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/566/size_3x2/2.jpg')
@@ -252,12 +252,13 @@ block appcontent
       +product('1x2', '/store', 'http://i.imgur.com/QLsJO5k.png')
       +article2x2_instagram('#', 'http://i.imgur.com/Kblqp7n.png', "http://instagram.com")
       +carousel
-        +carousel_item('', '→   BENSCRUB SMT 2015 COLLECTION', '#', 'http://i.imgur.com/tl7vP3K.png')
+        +carousel_item('', '', '#', 'http://i.imgur.com/ds1uj0U.png')
+        +carousel_item('', '', '#', 'http://i.imgur.com/ds1uj0U.png')
         //- +carousel_item('my new bestfriend for the past 3 days and for 11 days to go ❤️ thank you @benscrub i feel grrrreeeeattt!! ', '→   BENSCRUB SMT 2015 COLLECTION', '#', 'http://i.imgur.com/FnrK6k2.png')
         //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/ExjH0Q2.jpg')
         //- +carousel_item('Skin Fashion at New York Mercedes-Benz Fashion Week 2015', '→   RICHARD CHAI FALL 2015 COLLECTION', '#', 'http://i.imgur.com/riaLB7F.jpg')
-        +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/590/size_3x2/4.jpg')
-        +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/591/size_3x2/5.jpg')
+        //- +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/590/size_3x2/4.jpg')
+        //- +carousel_item('Skin by Dr. Jart at New York Mercedes-Benz Fashion Week 2015', ' →   OPENING CEREMONY  2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/591/size_3x2/5.jpg')
       +article_placeholder('2x1')
       +article1x1_tweet('Take the day off with our #Dermaclear Micro Water, available here: ', '#', 'http://t')
       +product('1x2', '/store', 'http://i.imgur.com/3W29WeT.png')
