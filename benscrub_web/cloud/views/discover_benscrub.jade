@@ -113,7 +113,8 @@ mixin article1x1_tweet(z_text, z_url, z_tweet_url)
     .article_tweet
       .date 0419
       a(href=z_tweet_url, target='_blank')
-        .icon.tile-icon.icon_twitter_outline
+        //- .icon.tile-icon.icon_twitter_outline
+        .icon.tile-icon.icon_create-symbol(style="font-size: 28px;-ms-transform:rotate(200deg);-moz-transform:rotate(200deg);-webkit-transform:rotate(200deg);-o-transform:rotate(200deg);")
       .twitter-text
         =z_text
         //- a(href=z_url, target='_blank') ...
@@ -225,7 +226,7 @@ block appcontent
       +article1x1_tweet('Coral powder, sage, + tea tree extract: The expert skincare ingredients in our 2-step Blackhead Patch. Shop here: ', '#', 'http://twitter.com')
       +article_placeholder('1x1')
       +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/657/thumb/10809811_462025390622023_784226847_n.jpg', 'http://instagram.com')
-      +product('1x2', '/store', 'http://i.imgur.com/ZTpSsHw.png')
+      +product('1x2', '/store', 'http://i.imgur.com/QLsJO5k.png')
       +product('1x2', '/store', 'http://i.imgur.com/iRyv6kL.png')
       +article1x1_tweet('You asked, we delivered. We’ve introduced a new shade of our #Premium #BBCream, just for you: ', '#', 'http://twitter.com')
       +article2x2_instagram('#', 'http://i.imgur.com/zduMNRJ.png', 'http://instagram.com')
@@ -249,7 +250,7 @@ block appcontent
       +article1x1_tweet('Highlight, neutralize and bronze your way to a sculpted look with our BB Mate Contouring Kit: ', '#', 'http://t')
       +product('1x2', '/store', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/754/original/dermaclear.png')
       +article1x1_tweet('Spotted: Our amazing sleeping masks —> RT @allure_magazine: Put these on tonight, wake up more glow-y. ', '#', 'http://t')
-      +product('1x2', '/store', 'http://i.imgur.com/QLsJO5k.png')
+      +product('1x2', '/store', 'http://i.imgur.com/ZTpSsHw.png')
       +article2x2_instagram('#', 'http://i.imgur.com/Kblqp7n.png', "http://instagram.com")
       +carousel
         +carousel_item('', '', '#', 'http://i.imgur.com/ds1uj0U.png')
@@ -273,23 +274,19 @@ block appcontent
       +article1x1_tweet('Embracing the sunshine + upping our #SPF to 30, via our bestselling BB Bounce Beauty Balm. Get yours here: ', '#', 'http://twitter.com')
 
       +carousel
-        +carousel_item('', ' → CELEBRATING DR. JARTS K-BEAUTY 10TH ANNIVERSARY EXHIBITION AND POP-UP SHOP', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/504/size_3x2/carousel-1107-02.jpg', 'black')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/508/size_3x2/carousel-1107-01.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/506/size_3x2/carousel-1107-3.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/511/size_3x2/01.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/512/size_3x2/02.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/513/size_3x2/03.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/515/size_3x2/04.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/516/size_3x2/05.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/517/size_3x2/06.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/514/size_3x2/07.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/518/size_3x2/08.jpg')
-        +carousel_item('', '', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/519/size_3x2/09.jpg')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/NFOWQf7.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/iUC6M2y.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/ohUPTyS.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/MoAkgd6.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/gMKksSI.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/7tEe9FK.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/38GmWn3.png')
+        +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/k9xpBDw.png')
       +article1x1_tweet('Get on board the #KBeauty bandwagon! @YahooBeauty, on how brands like #DrJart are innovating skincare: ', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/650/thumb/11055718_434118010084257_779784761_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/8wDRE3k.png', 'http://instagram.com')
       +article3x2_video('/embed?address=https://www.youtube.com/watch?v=7nk5T5HJYTc', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/533/original/video.png')
       .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 8283px, 0px);')
-        .mailinglist
+        .mailinglist(style="background-color:#007a87")
           .icon(style='top:25px; left:25px')
             img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
           .text
@@ -306,28 +303,29 @@ block appcontent
       +article1x1_tweet('Making your own nut milk: Delicious, easy, and 100% natural. Solid recipe, @intothegloss: ', '#', 'http://twitter.com')
       +article1x1_tweet('Take your routine on the go w/ our “Dynamic Duo” kit, ft. our Premium #BBCream + Dermaclear Micro Water. Get it here: ', '#', 'http://twitter.com')
       +article_placeholder('2x1')
-      +article2x2_instagram('#' ,'http://i.imgur.com/WQ6lyZm.png', 'http://instagram.com')      
-      +article_placeholder('2x1')
       +article1x1_tweet('“After 20 minutes…my skin feels soft, smooth, firmer.” @voguemagazine’s Marina Rust on our Prescriptment Masks: ', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/649/thumb/11055898_387940591398301_215708076_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#' ,'http://i.imgur.com/WQ6lyZm.png', 'http://instagram.com')      
+      //- +article_placeholder('2x1')
       +article1x1_tweet('Shoutout to the #Ceramides! RT @allure_magazine: Chapping, rawness, & stinging are the bodys ways of sending an SOS: ', '#', 'http://twitter.com')
-      +carousel
-        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/478/size_3x2/05.jpg')
-        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/477/size_3x2/04.jpg')
-        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/476/size_3x2/03.jpg')
-        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/479/size_3x2/06.jpg')
-        +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/481/size_3x2/08.jpg')
-      +article_placeholder('1xx')
+      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/649/thumb/11055898_387940591398301_215708076_n.jpg', 'http://instagram.com')
+      //- +carousel
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'http://i.imgur.com/tzz8ahF.png')
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/478/size_3x2/05.jpg')
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/477/size_3x2/04.jpg')
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/476/size_3x2/03.jpg')
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/479/size_3x2/06.jpg')
+      //-   +carousel_item('Dr. Jart supports New York Fashion Week Spring 2015', 'RICHARD CHAI SPRING 2015 COLLECTION', '#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/481/size_3x2/08.jpg')
+      +article_placeholder('1x1')
     // contents
     #load_more_area(style='width: 989px;')
       div(style='width:474px;height:42px;margin: 0 auto;')
         div(style='padding-top:85px')
           a.load_more_btn(href='#')
             img(alt='Load_more_btn', src='http://us.drjart.com/assets/load_more_btn-a0a7753769cfd77b0cc9b45e559c207e.png')
-    script.
-      $(document).ready(function(e){
-      TIIA.views.loadmore_view(1);
-      });
+    //- script.
+    //-   $(document).ready(function(e){
+    //-   TIIA.views.loadmore_view(1);
+    //-   });
   // hr#company
   // .content_company
   //   #history_carousel_wrapper
