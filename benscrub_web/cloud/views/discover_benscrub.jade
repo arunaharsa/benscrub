@@ -1,6 +1,5 @@
 extends layout_drjart
 
-
 mixin navbar
   .header.mobile(style='width: 1240px; left: 50%; margin-left: -647px;')
     .wrapper
@@ -8,62 +7,37 @@ mixin navbar
         .wrapper
           ul(style='margin-left: 0px; left: 0px;')
             li
-              img(alt='Icon_location', src='http://us.drjart.com/assets/icon_location-ef1e3966c731b1214410cecbb011eaf9.png', style='vertical-align: middle; height: 22px; margin-top: -2px;')
+              div.dib(style='vertical-align: middle; height: 22px; width:12px;')
+                .icon.icon_location_pin(style="font-size: 20px;left: 0;top: -1px;")
               |  INDONESIA
       .links_header
         .wrapper
           ul
             li
-              a.goto_company_btn(href='#') #BEAUTYISOURS
+              a.goto_company_btn(href='http://instagram.com/benscrub') #BEAUTYISOURS
             li
-              a.goto_dermatologists_btn(href='#') OUR HAPPY CUSTOMERS
+              a.goto_dermatologists_btn(href='http://instagram.com/benscrub') OUR HAPPY CUSTOMERS
             li
-              a(href='http://drjartus.tumblr.com/', target='_blank')
-                img(alt='Icon-tumblr', src='http://us.drjart.com/assets/icon-tumblr-3664ba868257947df622f3c0372be231.png', style='height:15px;vertical-align:middle')
-              a(href='http://twitter.com/drjartus', target='_blank')
-                img(alt='Icon-twitter', src='http://us.drjart.com/assets/icon-twitter-da6849516c0667629869630184771fde.png', style='height:15px;vertical-align:middle')
-              a(href='http://facebook.com/drjartus', target='_blank')
-                img(alt='Icon-facebook', src='http://us.drjart.com/assets/icon-facebook-0be3eb7f0c2aaddd4c1e8915c6f36bef.png', style='height:15px;vertical-align:middle')
-              a(href='http://instagram.com/drjartus', target='_blank')
-                img(alt='Icon-instagram', src='http://us.drjart.com/assets/icon-instagram-8cf4f868d4a0bea7390ed4810f2f8dd4.png', style='height:15px;vertical-align:middle')
+              a.icon.icon_instagram(href='http://instagram.com/benscrub', target='_blank', style="width: 20px; height: 20px; top: 0; font-size: 20px; position:relative; margin-left:10px;")
+              a.icon.icon_facebook(href='https://www.facebook.com/benscrub', target='_blank', style="width: 15px; height: 20px; top: 0; font-size: 20px; position:relative; margin-left:10px; margin-right:-10px;")
       hr
       .now_link
         a(href='/')
           | IN STOCK
       .logo_wrapper
-        a.logo_btn(href='#')
+        a.logo_btn(href='/')
           img(alt='Benscrub', src='/static/images/benlogo@2x.png')
       .products_link
         a(href='http://www.benscrub.com/products/all')
-          | STORE&nbsp;
-          img(alt='Product_link', src='http://us.drjart.com/assets/product_link-287a9f07d5eeecc75b4856028107b421.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
+          | STORE&nbsp;         
+          img(alt='Product_link', src='/static/images/product_go_to.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
   script.
       (function(){
-      $(document).ready(function(e){
-      _.delay(function(){
-      resize_call();
-      }, 400);
-      $("#back_top_btn").click(function(e){
-      e.preventDefault();[]
-      $("html, body").animate({
-      scrollTop: 0
-      });
-      });
-      $(".logo_btn").click(function(e){
-      e.preventDefault();
-      $("html, body").animate({
-      scrollTop: 0
-      })
-      });
-      });
       $(window).smartresize(resize_call).smartresize();
       function resize_call(){
-      var width = $(".info_header ul").width();
-      $(".info_header ul").css({
-      'margin-left': 0,
-      'left': ($(".info_header").width() / 2 - width / 2) + 'px'
-      });
-      $(".header.mobile").width($(window).width() - 40);
+        var width = $(".info_header ul").width();
+        $(".info_header ul").css({'margin-left': 0, 'left': ($(".info_header").width() / 2 - width / 2) + 'px'});
+        $(".header.mobile").width($(window).width() - 40);
       }
       })();
 
@@ -105,11 +79,9 @@ mixin article1x1_tweet(z_text, z_url, z_tweet_url)
     .article_tweet
       .date 0419
       a(href=z_tweet_url, target='_blank')
-        //- .icon.tile-icon.icon_twitter_outline
         .icon.tile-icon.icon_create-symbol(style="font-size: 28px;-ms-transform:rotate(200deg);-moz-transform:rotate(200deg);-webkit-transform:rotate(200deg);-o-transform:rotate(200deg);")
       .twitter-text
         =z_text
-        //- a(href=z_url, target='_blank') ...
       .CB
 
 mixin article2x2_instagram(z_url, z_image, z_instagram_url)
@@ -120,7 +92,7 @@ mixin article2x2_instagram(z_url, z_image, z_instagram_url)
         .icon.tile-icon2.icon_instagram
       .date 0419
       .instagram_photo
-        a(href='http://benscrub.parseapp.com/drjart/ig')
+        a(href=z_url)
           img(src=z_image)
 
 // input 1x1 2x2 2x3 etc
@@ -146,23 +118,23 @@ block appcontent
     +navbar
     .content.isotope
       +carousel      
-        +carousel_item('', ' → SEE HOW TO', '#', 'http://i.imgur.com/ts3NisB.png', 'black')
-        +carousel_item('', ' → SEE HAPPY CUSTOMERS', '#', 'http://i.imgur.com/UQX7CtW.png', 'white')
-        +carousel_item('', ' → MAKE. BELIEVE.', '#', 'http://i.imgur.com/0iwn9OK.png', 'black')
-      +article1x1_black('Benscrub is now available in Indonesia, have ready stocks and ships islandwide.', '#')
-      +article1x1_tweet('We\'re Benscrub, a girl-powered company on a mission to rethink beauty by selling a line of essential that celebrate realness rather than cover it up', '#', 'http://twitter.com')
+        +carousel_item('', ' → SEE HOW TO', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/ts3NisB.png', 'black')
+        +carousel_item('', ' → SEE HAPPY CUSTOMERS', 'http://instagram.com/benscrub', 'http://i.imgur.com/UQX7CtW.png', 'white')
+        +carousel_item('', ' → MAKE. BELIEVE.', 'http://instagram.com/benscrub', 'http://i.imgur.com/0iwn9OK.png', 'black')
+      +article1x1_black('Benscrub is now available in Indonesia, have ready stocks and ships islandwide.', 'http://instagram.com/benscrub')
+      +article1x1_tweet('We`re Benscrub, a girl-powered company on a mission to rethink beauty by selling a line of essential that celebrate realness rather than cover it up', '#', 'http://instagram.com/benscrub')
       +article_placeholder('1x1')
-      +article2x2_instagram('#', 'http://i.imgur.com/ynhRVOI.jpg', 'http://instagram.com')
-      +article1x1_tweet('By May 2014, more than 2,000+ products have been shipped without a single failure. REAL Happy Customers.', '#', 'http://twitter.com')
-      //- +article1x1_tweet('Had too much fun last night with frank. Frank is coffee scrub targeting dry skin, cellulite, acne, eczema and more.', '#', 'http://twitter.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/ynhRVOI.jpg', 'http://www.benscrub.com/products/hello-hair-hydrating-mask-island-special-edition')
+      +article1x1_tweet('By May 2014, more than 2,000+ products have been shipped without a single failure. REAL Happy Customers.', '#', 'http://instagram.com/benscrub')
+      //- +article1x1_tweet('Had too much fun last night with frank. Frank is coffee scrub targeting dry skin, cellulite, acne, eczema and more.', '#', 'http://instagram.com/benscrub')
       +carousel
-        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', '#', 'http://i.imgur.com/jAJlDS3.png')
-        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', '#', 'http://i.imgur.com/9KgSN0F.png')
-        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', '#', 'http://i.imgur.com/Fjynw3M.png')
+        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', 'http://www.benscrub.com/products/category/hello-hair', 'http://i.imgur.com/jAJlDS3.png')
+        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', 'http://www.benscrub.com/products/category/hello-hair', 'http://i.imgur.com/9KgSN0F.png')
+        +carousel_item('Hair Hair Hair', ' → OHHELLOHAIR 2015 COLLECTION', 'http://www.benscrub.com/products/category/hello-hair', 'http://i.imgur.com/Fjynw3M.png')
       .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 753px, 0px);')
         .mailinglist(style="background: rgb(123, 0, 81);")
           .icon(style='top:25px; left:25px')
-            img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
+            img(src='/static/images/mailinglist_icon.png')
           .text(style="right: 20px;")
             p
               | Sign up for news, sale notices and 
@@ -175,38 +147,38 @@ block appcontent
               .form-actions
                 input.mailinglist_btn(type='submit', value='CONFIRM')
       +article_placeholder('1x1')
-      +product('1x2', '/store', 'http://10efc.http.sng01.cdn.softlayer.net/shops/benscrub/products/150412170534_hellohairisl_zoom.png')
-      +article2x2_instagram('#', 'http://i.imgur.com/aLRwbC7.jpg', 'http://instagram.com')
-      +article1x1_tweet(' Begin your journey to healthier, longer and stronger locks with Hello Hair. The treatment will bring your tired and stressed out tresses back to life. 🙌', '#', 'http://twitter.com')
+      +product('1x2', 'http://www.benscrub.com/products/hello-hair-hydrating-mask-island-special-edition', 'http://10efc.http.sng01.cdn.softlayer.net/shops/benscrub/products/150412170534_hellohairisl_zoom.png')
+      +article2x2_instagram('http://www.benscrub.com/products/hello-hair-hydrating-mask-island-special-edition', 'http://i.imgur.com/aLRwbC7.jpg', 'http://instagram.com')
+      +article1x1_tweet(' Begin your journey to healthier, longer and stronger locks with Hello Hair. The treatment will bring your tired and stressed out tresses back to life. 🙌', '#', 'http://instagram.com/benscrub')
       +article_placeholder('1x2')
       +article3x2_video('/embed?address=https://www.youtube.com/watch?v=a3wwCPXD-TI', 'http://i.imgur.com/7Y56xaF.png')
       +article_placeholder('1x1')
-      +product('1x2', '/store', 'http://i.imgur.com/1RNRGye.png')
-      +product('1x2', '/store', 'https://cdn.shopify.com/s/files/1/0225/8527/t/10/assets/frank_balm.png?')
+      +product('1x2', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/1RNRGye.png')
+      +product('1x2', 'http://www.benscrub.com/products/frank-body-balm', 'https://cdn.shopify.com/s/files/1/0225/8527/t/10/assets/frank_balm.png?')
       +carousel
-        +carousel_item('@alicenorin loves it! He makes her skin soft and flawless!', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/7FHzbM4.png')
-        +carousel_item('thank you @benscrub, i love all of your products', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/Z5Wrfxa.png')
-        +carousel_item('@claudianovira and @kethagustine, two sisters who have enjoyed scrubbing their body with coffee', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/KDBs1yV.png')
-        +carousel_item('', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/UQX7CtW.png')
-        +carousel_item('This is how @arieltatum spent her weekends. Getting dirty with Frank, and she loved it', '→   BENSCRUB FRANK BODY 2015 COLLECTION', '#', 'http://i.imgur.com/xnEW5VS.png')
+        +carousel_item('@alicenorin loves it! He makes her skin soft and flawless!', '→   BENSCRUB FRANK BODY 2015 COLLECTION', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/7FHzbM4.png')
+        +carousel_item('thank you @benscrub, i love all of your products', '→   BENSCRUB FRANK BODY 2015 COLLECTION', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/Z5Wrfxa.png')
+        +carousel_item('@claudianovira and @kethagustine, two sisters who have enjoyed scrubbing their body with coffee', '→   BENSCRUB FRANK BODY 2015 COLLECTION', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/KDBs1yV.png')
+        +carousel_item('', '→   BENSCRUB FRANK BODY 2015 COLLECTION', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/UQX7CtW.png')
+        +carousel_item('This is how @arieltatum spent her weekends. Getting dirty with Frank, and she loved it', '→   BENSCRUB FRANK BODY 2015 COLLECTION', 'http://www.benscrub.com/products/category/frank-body', 'http://i.imgur.com/xnEW5VS.png')
       +article_placeholder('1x1')
-      +article1x1_tweet('Pump up the Vitamin E in your diet with broccoli, spinach + almonds — it helps protect against sun damage and aging. #beautytips', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'http://i.imgur.com/w3YDk69.png', 'http://instagram.com')
-      +article1x1_tweet('Just 30 minutes for glowy, bright, healthy skin. Give our Brightening Infusion Hydrogel Mask a go: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Pump up the Vitamin E in your diet with broccoli, spinach + almonds — it helps protect against sun damage and aging. #beautytips', '#', 'http://instagram.com/benscrub')
+      +article2x2_instagram('#', 'http://i.imgur.com/w3YDk69.png', 'http://i.imgur.com/w3YDk69.png')
+      +article1x1_tweet('Just 30 minutes for glowy, bright, healthy skin. Give our Brightening Infusion Hydrogel Mask a go: ', '#', 'http://instagram.com/benscrub')
       +article_placeholder('1x1')
-      +article1x1_tweet('Coral powder, sage, + tea tree extract: The expert skincare ingredients in our 2-step Blackhead Patch. Shop here: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Coral powder, sage, + tea tree extract: The expert skincare ingredients in our 2-step Blackhead Patch. Shop here: ', '#', 'http://instagram.com/benscrub')
       +article_placeholder('1x1')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/657/thumb/10809811_462025390622023_784226847_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/KIpGhBa.jpg', 'http://instagram.com')
       +product('1x2', '/store', 'http://i.imgur.com/QLsJO5k.png')
       +product('1x2', '/store', 'http://i.imgur.com/iRyv6kL.png')
-      +article1x1_tweet('You asked, we delivered. We’ve introduced a new shade of our #Premium #BBCream, just for you: ', '#', 'http://twitter.com')
+      +article1x1_tweet('You asked, we delivered. We’ve introduced a new shade of our #Premium #BBCream, just for you: ', '#', 'http://instagram.com/benscrub')
       +article2x2_instagram('#', 'http://i.imgur.com/zduMNRJ.png', 'http://instagram.com')
       +carousel      
         +carousel_item('', '', '#', 'http://i.imgur.com/HLCuR2h.png')
         +carousel_item('', '', '#', 'http://i.imgur.com/fciUviS.png')
         +carousel_item('', '', '#', 'http://i.imgur.com/qcUsWvb.png')
       +product('1x2', '/store', 'http://i.imgur.com/4FCgXzG.jpg')
-      +article1x1_tweet('Whipping up a #DIY green smoothie today, for a much-needed #Tuesday energy boost: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Whipping up a #DIY green smoothie today, for a much-needed #Tuesday energy boost: ', '#', 'http://instagram.com/benscrub')
       +article2x2_instagram('#', 'http://i.imgur.com/6r2Vh45.jpg', "http://instagram.com")
       +article_placeholder('1x1')
       +article_placeholder('2x1')
@@ -224,14 +196,14 @@ block appcontent
       +article1x1_tweet('Take the day off with our #Dermaclear Micro Water, available here: ', '#', 'http://t')
       +product('1x2', '/store', 'http://i.imgur.com/3W29WeT.png')
       +article_placeholder('1x1');
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/653/thumb/11142910_1378847952442834_1998640305_n.jpg', 'http://instagram.com')
+      +article2x2_instagram('#', 'http://i.imgur.com/lo4W7dw.jpg', 'http://instagram.com')
       +article1x1_tweet('So key for good skin. RT @voguemagazine: 6 new tech breakthroughs to get you a better night’s sleep: ', '#', 'http://t')
       +article2x2_instagram('#', 'http://i.imgur.com/DWdgk0f.png', 'http://instagram.com')
       +product('1x2', '/store', 'http://i.imgur.com/7pGnOwn.png')
       +article_placeholder('1x2');
       +article_placeholder('1x1'); 
-      +article1x1_tweet('Golden light + the #Manhattan skyline make for an ideal #Sunday:', '#', 'http://twitter.com')
-      +article1x1_tweet('Embracing the sunshine + upping our #SPF to 30, via our bestselling BB Bounce Beauty Balm. Get yours here: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Golden light + the #Manhattan skyline make for an ideal #Sunday:', '#', 'http://instagram.com/benscrub')
+      +article1x1_tweet('Embracing the sunshine + upping our #SPF to 30, via our bestselling BB Bounce Beauty Balm. Get yours here: ', '#', 'http://instagram.com/benscrub')
 
       +carousel
         +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/NFOWQf7.png')
@@ -242,13 +214,13 @@ block appcontent
         +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/7tEe9FK.png')
         +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/38GmWn3.png')
         +carousel_item('', '→  SEE COLLECTION', '#', 'http://i.imgur.com/k9xpBDw.png')
-      +article1x1_tweet('Get on board the #KBeauty bandwagon! @YahooBeauty, on how brands like #DrJart are innovating skincare: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Get on board the #KBeauty bandwagon! @YahooBeauty, on how brands like #DrJart are innovating skincare: ', '#', 'http://instagram.com/benscrub')
       +article2x2_instagram('#', 'http://i.imgur.com/8wDRE3k.png', 'http://instagram.com')
       +article3x2_video('/embed?address=https://www.youtube.com/watch?v=7nk5T5HJYTc', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/533/original/video.png')
       .article.size_1x2.isotope-item(style='position: absolute; left: 0px; top: 0px; transform: translate3d(763px, 8283px, 0px);')
         .mailinglist(style="background-color:#007a87")
           .icon(style='top:25px; left:25px')
-            img(src='https://s3.amazonaws.com/drjartus-production-s3/public/system/pictures/photos/212/original/mailinglist_icon.png')
+            img(src='/static/images/mailinglist_icon.png')
           .text
             p
               | Sign up for news, sale notices and 
@@ -260,17 +232,17 @@ block appcontent
                 input.email_text(type='text', name='mailinglist[email]', placeholder='Enter Email Address')
               .form-actions
                 input.mailinglist_btn(type='submit', value='CONFIRM')
-      +article1x1_tweet('Making your own nut milk: Delicious, easy, and 100% natural. Solid recipe, @intothegloss: ', '#', 'http://twitter.com')
-      +article1x1_tweet('Take your routine on the go w/ our “Dynamic Duo” kit, ft. our Premium #BBCream + Dermaclear Micro Water. Get it here: ', '#', 'http://twitter.com')
+      +article1x1_tweet('Making your own nut milk: Delicious, easy, and 100% natural. Solid recipe, @intothegloss: ', '#', 'http://instagram.com/benscrub')
+      +article1x1_tweet('Take your routine on the go w/ our “Dynamic Duo” kit, ft. our Premium #BBCream + Dermaclear Micro Water. Get it here: ', '#', 'http://instagram.com/benscrub')
       +article_placeholder('2x1')
-      +article1x1_tweet('“After 20 minutes…my skin feels soft, smooth, firmer.” @voguemagazine’s Marina Rust on our Prescriptment Masks: ', '#', 'http://twitter.com')
+      +article1x1_tweet('“After 20 minutes…my skin feels soft, smooth, firmer.” @voguemagazine’s Marina Rust on our Prescriptment Masks: ', '#', 'http://instagram.com/benscrub')
       +article2x2_instagram('#' ,'http://i.imgur.com/WQ6lyZm.png', 'http://instagram.com')      
-      +article1x1_tweet('Shoutout to the #Ceramides! RT @allure_magazine: Chapping, rawness, & stinging are the bodys ways of sending an SOS: ', '#', 'http://twitter.com')
-      +article2x2_instagram('#', 'https://s3.amazonaws.com/drjartus-production-s3/public/system/instagrams/medias/649/thumb/11055898_387940591398301_215708076_n.jpg', 'http://instagram.com')
+      +article1x1_tweet('Shoutout to the #Ceramides! RT @allure_magazine: Chapping, rawness, & stinging are the bodys ways of sending an SOS: ', '#', 'http://instagram.com/benscrub')
+      +article2x2_instagram('#', 'http://i.imgur.com/DA1LN9U.jpg', 'http://instagram.com')
       +article_placeholder('1x1')
     // contents
     #load_more_area(style='width: 989px;')
       div(style='width:474px;height:42px;margin: 0 auto;')
         div(style='padding-top:85px')
-          a.load_more_btn(href='#')
-            img(alt='Load_more_btn', src='http://us.drjart.com/assets/load_more_btn-a0a7753769cfd77b0cc9b45e559c207e.png')
+          a.load_more_btn(href='http://www.benscrub.com/products/all')
+            img(alt='Load_more_btn', src='/static/images/shop_product_go_to.png')
