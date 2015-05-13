@@ -8271,3 +8271,44 @@ TIIA.dispatcher = _.clone(Backbone.Events), TIIA.models = TIIA.models || {}, TII
         t, n, r = 0;
     return s
 }();
+
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+function postEmailToGoogle(){
+	var el_email = $('.email_text');
+    var email = el_email.val();
+    if ((email !== "") && (validateEmail(email))) {
+        $.ajax({
+            url: 'https://docs.google.com/forms/d/1BaRieNjpZAIZLUg3jAcvBuJtB5dt4Ot8gpo5_fgT-WQ/formResponse',
+            data: {"entry.128654343" : email},
+            type: "POST",
+            dataType: "xml",
+            statusCode: {
+                0: function (){
+                    el_email.val("");
+            		alert("Thank you, your email has been accepted. We'll get back to you shortly.")
+                    //Success message
+                },
+                200: function (){
+                    el_email.val("");                    
+            		alert("Thank you, your email has been accepted. We'll get back to you shortly.")
+                    //Success Message
+                }
+            }
+        });
+    }
+    else {
+		alert("Please enter a valid email address");
+    }
+}
+
+$(document).ready(function(){
+	$('.mailinglist_btn').on('click', function(e){
+		e.preventDefault();
+		postEmailToGoogle();
+	})
+});
