@@ -41,7 +41,7 @@ app.get('/ig', function(req, res) {
 });
 
 app.get('/drjart', function(req, res) {
-  res.render('discover_drjart', {});
+  res.render('unused_discover_drjart', {});
 });
 
 app.get('/drjart/ig', function(req, res) {
