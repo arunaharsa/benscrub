@@ -1,0 +1,875 @@
+/*
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   TYPOGRAPHY UTILITIES
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+@media only screen {
+  .small-text-center{ text-align: center; }
+  .small-text-left{ text-align: left; }
+  .small-text-right{ text-align: right; }
+}
+@media only screen and (min-width: 40.063em) {
+  .medium-text-center{ text-align: center; }
+  .medium-text-left{ text-align: left; }
+  .medium-text-right{ text-align: right; }
+}
+@media only screen and (min-width: 64.063em) {
+  .large-text-center{ text-align: center; }
+  .large-text-left{ text-align: left; }
+  .large-text-right{ text-align: right; }
+}
+
+.text-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+.lhm { line-height: 1.4; }
+.lhs { line-height: 1.1; }
+.lhn { line-height: 1; }
+
+/*
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   SIZING UTILITIES
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+
+.fill-parent{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.posa {
+  position: absolute;
+}
+.posr {
+  position: relative;
+}
+.db {
+  display: block;
+}
+.dib {
+  display: inline-block;
+}
+.width-max {
+  width: 100%; 
+}
+.max-width-max{
+  max-width: 100%;
+}
+.height-max{
+  height: 100%; 
+}
+.oh {
+  overflow: hidden;
+}
+.zindex1 {
+  z-index: 1;
+}
+.opacity-m {
+  opacity: 0.5;
+}
+.phcollapsefix { /* to fix small-collapse padding */
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+/* -------------------------------------------------------------------------- */
+/**
+ * REFLOW FUNCTION
+ * Preventing reflow and adding loading layer behind image
+ * src: http://andmag.se/2012/10/responsive-images-how-to-prevent-reflow/
+ */
+.embed-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+.ratio-1-1 {
+  padding-bottom: 100%;
+}
+.ratio-4-3 {
+  padding-bottom: 75%;
+}
+.ratio-3-2 {
+  padding-bottom: 66.67%;
+}
+.ratio-16-9 {
+  padding-bottom: 56.25%; /*9/16*100%*/;
+}
+/* -------------------------------------------------------------------------- */
+/**
+ * Flag object
+ * The flag object allows you to display an image or icon with some text
+ * next to it, with their vertical middles aligned.
+ */
+.flag {
+  display: table;
+}
+.flag--image,
+.flag--body {
+  display: table-cell;
+  vertical-align: middle;
+}
+.flag--top .flag--image,
+.flag--top .flag--body {
+  vertical-align: top;
+}
+.flag--bottom .flag--image,
+.flag--bottom .flag--body {
+  vertical-align: bottom;
+}
+.flag--image > img {
+  display: block;
+  max-width: none;
+}
+.flag--image > span {
+  display: block;
+  max-width: none;
+}
+
+.va-container {
+  display: table;
+  position: relative;
+}
+.va-top, .va-middle, .va-bottom {
+  display: table-cell;
+}
+.va-middle{
+  vertical-align: middle;
+}
+.va-top{
+  vertical-align: top;
+}
+.va-bottom{
+  vertical-align: bottom;
+}
+/*
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   BORDER AND HR UTILITIES
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+/**
+ * Border scale
+ */
+.border-a {
+  border-width: 1px;
+  border-style: solid;
+}
+.border-t {
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+.border-b {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.border-h {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-left-style: solid;
+  border-right-style: solid;
+}
+.border-v {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+}
+.border-l {
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+.border-r {
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.border-an {
+  border: none !important;
+}
+.border-tn {
+  border-top-width: 0;
+}
+.border-bn {
+  border-bottom-width: 0;
+}
+.border-ln {
+  border-left-width: 0;
+}
+.border-rn {
+  border-right-width: 0;
+}
+/*
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   SPACING UTILITIES
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+/**
+ * Used to adjust the default spacing between components
+ * Use with great care!
+ *
+ * <type><direction><size> -impt
+ *
+ * a = all
+ * t = top
+ * r = right
+ * b = bottom
+ * l = left
+ * h = horizontal
+ * v = vertical
+ *
+ * n = none
+ * xs = extra small
+ * s = small
+ * m = medium
+ * l = large
+ * x = extra large
+ */
+/* All */
+.man {
+  margin: 0px;
+}
+.mhn {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.mvn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.mln {
+  margin-left: 0px;
+}
+.mrn {
+  margin-right: 0px;
+}
+.mtn {
+  margin-top: 0px;
+}
+.mbn {
+  margin-bottom: 0px;
+}
+.maxs {
+  margin: 3px;
+}
+.mhxs {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.mvxs {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.mlxs {
+  margin-left: 3px;
+}
+.mrxs {
+  margin-right: 3px;
+}
+.mtxs {
+  margin-top: 3px;
+}
+.mbxs {
+  margin-bottom: 3px;
+}
+.mas {
+  margin: 5px;
+}
+.mhs {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.mvs {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.mls {
+  margin-left: 5px;
+}
+.mrs {
+  margin-right: 5px;
+}
+.mts {
+  margin-top: 5px;
+}
+.mbs {
+  margin-bottom: 5px;
+}
+.mam {
+  margin: 10px;
+}
+.mhm {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.mvm {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.mlm {
+  margin-left: 10px;
+}
+.mrm {
+  margin-right: 10px;
+}
+.mtm {
+  margin-top: 10px;
+}
+.mbm {
+  margin-bottom: 10px;
+}
+.mal {
+  margin: 15px;
+}
+.mhl {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.mvl {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.mll {
+  margin-left: 15px;
+}
+.mrl {
+  margin-right: 15px;
+}
+.mtl {
+  margin-top: 15px;
+}
+.mbl {
+  margin-bottom: 15px;
+}
+.max {
+  margin: 20px;
+}
+.mhx {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.mvx {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.mlx {
+  margin-left: 20px;
+}
+.mrx {
+  margin-right: 20px;
+}
+.mtx {
+  margin-top: 20px;
+}
+.mbx {
+  margin-bottom: 20px;
+}
+.maxl {
+  margin: 25px;
+}
+.mhxl {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.mvxl {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.mlxl {
+  margin-left: 25px;
+}
+.mrxl {
+  margin-right: 25px;
+}
+.mtxl {
+  margin-top: 25px;
+}
+.mbxl {
+  margin-bottom: 25px;
+}
+.pan {
+  padding: 0px;
+}
+.phn {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.pvn {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.pln {
+  padding-left: 0px;
+}
+.prn {
+  padding-right: 0px;
+}
+.ptn {
+  padding-top: 0px;
+}
+.pbn {
+  padding-bottom: 0px;
+}
+.paxs {
+  padding: 3px;
+}
+.phxs {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.pvxs {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.plxs {
+  padding-left: 3px;
+}
+.prxs {
+  padding-right: 3px;
+}
+.ptxs {
+  padding-top: 3px;
+}
+.pbxs {
+  padding-bottom: 3px;
+}
+.pas {
+  padding: 5px;
+}
+.phs {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.pvs {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.pls {
+  padding-left: 5px;
+}
+.prs {
+  padding-right: 5px;
+}
+.pts {
+  padding-top: 5px;
+}
+.pbs {
+  padding-bottom: 5px;
+}
+.pam {
+  padding: 10px;
+}
+.phm {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pvm {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.plm {
+  padding-left: 10px;
+}
+.prm {
+  padding-right: 10px;
+}
+.ptm {
+  padding-top: 10px;
+}
+.pbm {
+  padding-bottom: 10px;
+}
+.pal {
+  padding: 15px;
+}
+.phl {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.pvl {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.pll {
+  padding-left: 15px;
+}
+.prl {
+  padding-right: 15px;
+}
+.ptl {
+  padding-top: 15px;
+}
+.pbl {
+  padding-bottom: 15px;
+}
+.pax {
+  padding: 20px;
+}
+.phx {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.pvx {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.plx {
+  padding-left: 20px;
+}
+.prx {
+  padding-right: 20px;
+}
+.ptx {
+  padding-top: 20px;
+}
+.pbx {
+  padding-bottom: 20px;
+}
+.paxl {
+  padding: 25px;
+}
+.phxl {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.pvxl {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.plxl {
+  padding-left: 25px;
+}
+.prxl {
+  padding-right: 25px;
+}
+.ptxl {
+  padding-top: 25px;
+}
+.pbxl {
+  padding-bottom: 25px;
+}
+/* important */
+.man-impt {
+  margin: 0px !important;
+}
+.mhn-impt {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.mvn-impt {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.mln-impt {
+  margin-left: 0px !important;
+}
+.mrn-impt {
+  margin-right: 0px !important;
+}
+.mtn-impt {
+  margin-top: 0px !important;
+}
+.mbn-impt {
+  margin-bottom: 0px !important;
+}
+.maxs-impt {
+  margin: 3px !important;
+}
+.mhxs-impt {
+  margin-left: 3px !important;
+  margin-right: 3px !important;
+}
+.mvxs-impt {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+.mlxs-impt {
+  margin-left: 3px !important;
+}
+.mrxs-impt {
+  margin-right: 3px !important;
+}
+.mtxs-impt {
+  margin-top: 3px !important;
+}
+.mbxs-impt {
+  margin-bottom: 3px !important;
+}
+.mas-impt {
+  margin: 5px !important;
+}
+.mhs-impt {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+.mvs-impt {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+.mls-impt {
+  margin-left: 5px !important;
+}
+.mrs-impt {
+  margin-right: 5px !important;
+}
+.mts-impt {
+  margin-top: 5px !important;
+}
+.mbs-impt {
+  margin-bottom: 5px !important;
+}
+.mam-impt {
+  margin: 10px !important;
+}
+.mhm-impt {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.mvm-impt {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.mlm-impt {
+  margin-left: 10px !important;
+}
+.mrm-impt {
+  margin-right: 10px !important;
+}
+.mtm-impt {
+  margin-top: 10px !important;
+}
+.mbm-impt {
+  margin-bottom: 10px !important;
+}
+.mal-impt {
+  margin: 15px !important;
+}
+.mhl-impt {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.mvl-impt {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+.mll-impt {
+  margin-left: 15px !important;
+}
+.mrl-impt {
+  margin-right: 15px !important;
+}
+.mtl-impt {
+  margin-top: 15px !important;
+}
+.mbl-impt {
+  margin-bottom: 15px !important;
+}
+.max-impt {
+  margin: 20px !important;
+}
+.mhx-impt {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+.mvx-impt {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+.mlx-impt {
+  margin-left: 20px !important;
+}
+.mrx-impt {
+  margin-right: 20px !important;
+}
+.mtx-impt {
+  margin-top: 20px !important;
+}
+.mbx-impt {
+  margin-bottom: 20px !important;
+}
+.maxl-impt {
+  margin: 25px !important;
+}
+.mhxl-impt {
+  margin-left: 25px !important;
+  margin-right: 25px !important;
+}
+.mvxl-impt {
+  margin-top: 25px !important;
+  margin-bottom: 25px !important;
+}
+.mlxl-impt {
+  margin-left: 25px !important;
+}
+.mrxl-impt {
+  margin-right: 25px !important;
+}
+.mtxl-impt {
+  margin-top: 25px !important;
+}
+.mbxl-impt {
+  margin-bottom: 25px !important;
+}
+.pan-impt {
+  padding: 0px !important;
+}
+.phn-impt {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.pvn-impt {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.pln-impt {
+  padding-left: 0px !important;
+}
+.prn-impt {
+  padding-right: 0px !important;
+}
+.ptn-impt {
+  padding-top: 0px !important;
+}
+.pbn-impt {
+  padding-bottom: 0px !important;
+}
+.paxs-impt {
+  padding: 3px !important;
+}
+.phxs-impt {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+.pvxs-impt {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+.plxs-impt {
+  padding-left: 3px !important;
+}
+.prxs-impt {
+  padding-right: 3px !important;
+}
+.ptxs-impt {
+  padding-top: 3px !important;
+}
+.pbxs-impt {
+  padding-bottom: 3px !important;
+}
+.pas-impt {
+  padding: 5px !important;
+}
+.phs-impt {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.pvs-impt {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.pls-impt {
+  padding-left: 5px !important;
+}
+.prs-impt {
+  padding-right: 5px !important;
+}
+.pts-impt {
+  padding-top: 5px !important;
+}
+.pbs-impt {
+  padding-bottom: 5px !important;
+}
+.pam-impt {
+  padding: 10px !important;
+}
+.phm-impt {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.pvm-impt {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.plm-impt {
+  padding-left: 10px !important;
+}
+.prm-impt {
+  padding-right: 10px !important;
+}
+.ptm-impt {
+  padding-top: 10px !important;
+}
+.pbm-impt {
+  padding-bottom: 10px !important;
+}
+.pal-impt {
+  padding: 15px !important;
+}
+.phl-impt {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.pvl-impt {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+.pll-impt {
+  padding-left: 15px !important;
+}
+.prl-impt {
+  padding-right: 15px !important;
+}
+.ptl-impt {
+  padding-top: 15px !important;
+}
+.pbl-impt {
+  padding-bottom: 15px !important;
+}
+.pax-impt {
+  padding: 20px !important;
+}
+.phx-impt {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.pvx-impt {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+.plx-impt {
+  padding-left: 20px !important;
+}
+.prx-impt {
+  padding-right: 20px !important;
+}
+.ptx-impt {
+  padding-top: 20px !important;
+}
+.pbx-impt {
+  padding-bottom: 20px !important;
+}
+.paxl-impt {
+  padding: 25px !important;
+}
+.phxl-impt {
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
+.pvxl-impt {
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
+}
+.plxl-impt {
+  padding-left: 25px !important;
+}
+.prxl-impt {
+  padding-right: 25px !important;
+}
+.ptxl-impt {
+  padding-top: 25px !important;
+}
+.pbxl-impt {
+  padding-bottom: 25px !important;
+}

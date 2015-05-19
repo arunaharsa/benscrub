@@ -1,0 +1,226 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+border:0;
+outline:0;
+font-size:100%;
+vertical-align:baseline;
+background:transparent;
+margin:0;
+padding:0;
+}
+
+body {
+line-height:1;
+text-align:left;
+font:12px Helvetica, sans-serif;
+background-color:#fff;
+-webkit-font-smoothing:subpixel-antialiased;
+overflow-x:hidden;
+}
+
+ol,ul {
+list-style:none;
+}
+
+blockquote,q {
+quotes:none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+content:none;
+}
+
+:focus {
+outline:0;
+}
+
+ins {
+text-decoration:none;
+}
+
+del {
+text-decoration:line-through;
+}
+
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+
+.clear:after {
+content:".";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+}
+
+body,div,p,input,textarea {
+font-size-adjust:0.508;
+font-weight:400;
+font-style:normal;
+font-size:17px;
+}
+
+input {
+-webkit-appearance:none;
+border-radius:0;
+}
+
+::-webkit-input-placeholder {
+color:#999;
+text-overflow:ellipsis;
+}
+
+div.CB {
+clear:both!important;
+width:0;
+height:0;
+margin:0;
+padding:0;
+}
+
+a,a:hover {
+text-decoration:none;
+color:#999;
+}
+
+a img {
+border:none;
+}
+
+a:hover {
+opacity:.5;
+}
+
+.header.mobile {
+height:70px;
+background-color:#FFF;
+position:fixed;
+width:100%;
+top:0;
+z-index:9999;
+padding:7px 20px 20px;
+}
+
+.header.mobile hr {
+position:absolute;
+top:24px;
+border:0;
+border-top:2px solid #000;
+width:100%;
+}
+
+.header.mobile .info_header {
+position:absolute;
+height:50px;
+left:0;
+top:0;
+}
+
+.header.mobile .links_header {
+position:absolute;
+height:50px;
+left:0;
+top:5px;
+}
+
+.header.mobile .now_link {
+left:0;
+top:45px;
+position:absolute;
+}
+
+.header.mobile .logo_wrapper {
+position:absolute;
+left:50%;
+margin-left:-100px;
+top:45px;
+}
+
+.header.mobile .logo_wrapper a.logo_btn img {
+width:170px;
+}
+
+.header.mobile .products_link {
+right:0;
+top:45px;
+position:absolute;
+}
+
+.content {
+max-width:2560px;
+min-width:487px;
+margin:100px auto auto;
+padding:0 10px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+line-height:1.1em;
+}
+
+h1 {
+font-size:31px;
+font-weight:700;
+}
+
+h2 {
+font-size:22px;
+font-weight:700;
+}
+
+h3 {
+font-size:22px;
+font-weight:400;
+}
+
+h4 {
+font-size:16px;
+font-weight:700;
+}
+
+h5 {
+font-size:16px;
+font-weight:400;
+}
+
+h2 a {
+color:#b60c6a;
+}
+
+h3 a {
+color:#7acdc8;
+}
+
+.header.mobile .info_header .wrapper,.header.mobile .links_header .wrapper,.header.mobile .wrapper{
+position:relative;
+}
+
+:-moz-placeholder,::-moz-placeholder,:-ms-input-placeholder {
+color:#999!important;
+text-overflow:ellipsis;
+}
+
+
+#history_carousel_wrapper #history_carousel .wrapper img,div#our_dermatologists_wrapper .wrapper img,div#our_dermatologists_wrapper .main_dr div.image img,.carousel .wrapper img,#main_product_carousel_list .wrapper img,.article .article_instagraam div.instagram_photo img,.article .article_facebook .facebook_photo a img,.product div.wrapper div.photo a img,.product_detail .wrapper div.left div.picture_area div.padding_wrapper div.pic img {
+width:100%;
+height:100%;
+}
+
+.header.mobile .info_header .wrapper ul li,.header.mobile .links_header .wrapper ul li {
+display:inline;
+margin-right:10px;
+font-size:12px;
+}
+
+.header.mobile .info_header .wrapper ul li.text div.txt,.header.mobile .links_header .wrapper ul li.text div.txt {
+margin-top:-10px;
+}
+
+.header.mobile .links_header .wrapper ul li a,.green a {
+color:#000;
+}
+
+.header.mobile .now_link a:link,.header.mobile .now_link a:visited,.header.mobile .products_link a:link,.header.mobile .products_link a:visited {
+color:#000;
+}
+

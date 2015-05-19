@@ -1,0 +1,76 @@
+a:focus {
+  color: #777;
+}
+
+.header.mobile hr {
+  margin: 0.2em 0 0.2em 0;
+}
+.header.mobile{
+  height: 97px; 
+}
+
+p {
+  line-height: inherit;
+}
+
+.article .article_tweet {
+  border: 0
+}
+
+.header.mobile .logo_wrapper {
+  margin-left: -85px;
+}
+
+.header.mobile .logo_wrapper a.logo_btn img {
+  width: 170px;
+}
+
+body, div, p, input, textarea {
+  font: normal 400 100%/1.45 "AtlasTypewriterRegular", "Andale Mono", "Consolas", "Lucida Console", "Menlo", "Luxi Mono", monospace;
+  font-size: 14px;
+}
+
+.mailinglist .mail_form input.email_text {
+  font-family: "AtlasTypewriterRegular";
+  font-size: 12px;
+}
+.article .article_tweet  .twitter-text{
+  top: 3em;
+}
+
+.header.mobile .now_link a:link, .header.mobile .now_link a:visited , .header.mobile .products_link a:link, .header.mobile .products_link a:visited{
+  font-family: "AtlasGroteskBold", "AtlasGrotesk-Bold", "Helvetica Neue", "HelveticaNeue", "Helvetica", "Arial", sans-serif
+}
+
+.date{
+  color: #ff5a5f;
+}
+
+.tile-icon{  
+  font-size: 46px;
+  line-height: 35px;
+  width: 33px;
+  top: 0;
+  height: 33px;
+  margin-top: 0;
+}
+
+/* In 2x2 article */
+.tile-icon2{ 
+  color: #fff;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin-top: 0; 
+}
+
+.sample-icon{
+  font-size: 46px;
+  line-height: 35px;
+  width: 33px;
+  height: 33px;
+  position: relative;
+  right: inherit;
+  top: inherit;
+  margin: 20px;
+}

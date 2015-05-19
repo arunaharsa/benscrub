@@ -1,0 +1,56 @@
+extends layout_drjart_mobile
+include discover_benscrub
+
+mixin navbar_mobile
+  .header.mobile
+    .wrapper
+      .links_header
+        .wrapper
+          ul
+            li
+              a.goto_company_btn(href='http://instagram.com/benscrub') #BEAUTYISOURS
+            li
+              a.goto_dermatologists_btn(href='http://instagram.com/benscrub') OUR HAPPY CUSTOMERS
+            li
+              a.icon.icon_instagram(href='http://instagram.com/benscrub', target='_blank', style="width: 20px; height: 20px; top: 0; font-size: 20px; position:relative; margin-left:10px;")
+              a.icon.icon_facebook(href='https://www.facebook.com/benscrub', target='_blank', style="width: 15px; height: 20px; top: 0; font-size: 20px; position:relative; margin-left:10px; margin-right:-10px;")
+      hr
+      .now_link
+        a(href='/')
+          | IN STOCK
+      .logo_wrapper
+        a.logo_btn(href='/')
+          img(alt='Benscrub', src='http://static-assets.benscrub.com/static1/images/benlogo@2x.png')
+      .products_link(style="right:30px")
+        a(href='http://store.benscrub.com')
+          | STORE&nbsp;         
+          img(alt='Product_link', src='http://static-assets.benscrub.com/static1/images/product_go_to.png', style='vertical-align: middle; margin-top: -3px; height: 14px;')
+
+block appcontent
+  .wrapper
+    +navbar_mobile
+    .content
+      img.width-max(src="http://static.benscrub.com/DfxfTTd2.jpg")
+      br
+      a(href="http://store.benscrub.com/products/category/frank-body")
+        img(src="http://static.benscrub.com/NDumD3S.png", style="width:100%; margin:20px 0")
+      br
+      a.width-max(href="http://store.benscrub.com/products/all")
+        img.width-max(src="http://static.benscrub.com/olCS1Df.png")
+      br
+      br
+      img.width-max(src="http://static.benscrub.com/qKkEd6h.png")
+      a(href="http://store.benscrub.com/products/category/frank-body", class="left", style="width:50%")
+        img.width-max(src="http://static.benscrub.com/Tnw118S.png")
+      a(href="http://store.benscrub.com/products/category/hello-hair", class="left", style="width:50%")
+        img.width-max(src="http://static.benscrub.com/PivPhGX.png")
+      a(href="http://store.benscrub.com/products/frank-body-balm", class="left", style="width:50%")
+        img.width-max(src="http://static.benscrub.com/AIFmEMX.png")
+      a(href="http://store.benscrub.com/products/category/skinnyme-tea", class="left", style="width:50%")
+        img.width-max(src="http://static.benscrub.com/hgOGEJJ.png")
+      .CB
+      br
+      br
+      br
+      br
+      br

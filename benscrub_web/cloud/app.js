@@ -23,6 +23,14 @@ app.get('/', function(req, res) {
   res.render('discover_benscrub', {});
 });
 
+app.get('/dev', function(req, res) {
+  res.render('dev/discover_benscrub', {});
+});
+
+app.get('/dev/mobile', function(req, res) {
+  res.render('dev/discover_benscrub_mobile', {});
+});
+
 app.get('/farfetch', function(req, res) {
   res.render('discover', {});
 });
