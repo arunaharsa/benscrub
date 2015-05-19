@@ -71,7 +71,7 @@ color:#999;
 text-overflow:ellipsis;
 }
 
-div.CB {
+.CB {
 clear:both!important;
 width:0;
 height:0;
@@ -223,4 +223,9 @@ color:#000;
 .header.mobile .now_link a:link,.header.mobile .now_link a:visited,.header.mobile .products_link a:link,.header.mobile .products_link a:visited {
 color:#000;
 }
-
+.left{
+	float:left;
+}
+.width-max{
+	width: 100%;
+}

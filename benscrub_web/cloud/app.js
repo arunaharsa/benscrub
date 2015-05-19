@@ -23,6 +23,10 @@ app.get('/', function(req, res) {
   res.render('discover_benscrub', {});
 });
 
+app.get('/mobile', function(req, res) {
+  res.render('discover_benscrub_mobile', {});
+});
+
 app.get('/dev', function(req, res) {
   res.render('dev/discover_benscrub', {});
 });
@@ -31,12 +35,12 @@ app.get('/dev/mobile', function(req, res) {
   res.render('dev/discover_benscrub_mobile', {});
 });
 
-app.get('/farfetch', function(req, res) {
-  res.render('discover', {});
+app.get('/dev/farfetch', function(req, res) {
+  res.render('dev/discover', {});
 });
 
-app.get('/airbnb-glyph', function(req, res) {
-  res.render('airbnb-glyph', {});
+app.get('/dev/airbnb-glyph', function(req, res) {
+  res.render('dev/airbnb-glyph', {});
 });
 
 app.get('/ig', function(req, res) {
@@ -48,8 +52,8 @@ app.get('/ig', function(req, res) {
   });
 });
 
-app.get('/drjart', function(req, res) {
-  res.render('unused_discover_drjart', {});
+app.get('/dev/drjart', function(req, res) {
+  res.render('dev/unused_discover_drjart', {});
 });
 
 app.get('/drjart/ig', function(req, res) {

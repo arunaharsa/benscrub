@@ -568,13 +568,13 @@ font-size:12px;
 text-align:left;
 cursor:pointer;
 border:none;
-background:url(http://static-assets.benscrub.com/static1/images/email_btn_arrow.png) 0 8px no-repeat;
+background:url(http://static-assets.benscrub.com/static2/images/email_btn_arrow.png) 0 8px no-repeat;
 padding:4px 0 0 12px;
 }
 
 div#load_more_area {
 height:236px;
-background:url(http://static-assets.benscrub.com/static1/images/loadmore_line.png) repeat-x 0 140px;
+background:url(http://static-assets.benscrub.com/static2/images/loadmore_line.png) repeat-x 0 140px;
 margin:0 auto;
 }
 
@@ -771,7 +771,7 @@ z-index:500;
 text-indent:-9999px;
 width:41px;
 height:41px;
-background:url(http://static-assets.benscrub.com/static1/images/carousel_previous.png) no-repeat;
+background:url(http://static-assets.benscrub.com/static2/images/carousel_previous.png) no-repeat;
 }
 
 .carousel .slidesjs-pagination,#main_product_carousel_list .slidesjs-pagination {
@@ -791,11 +791,11 @@ text-indent:-9999px;
 display:inline-block;
 width:10px;
 height:10px;
-background:url(http://static-assets.benscrub.com/static1/images/carousel_unselected.png) no-repeat;
+background:url(http://static-assets.benscrub.com/static2/images/carousel_unselected.png) no-repeat;
 }
 
 .carousel .slidesjs-pagination li a.active,#main_product_carousel_list .slidesjs-pagination li a.active {
-background:url(http://static-assets.benscrub.com/static1/images/carousel_selected.png) no-repeat;
+background:url(http://static-assets.benscrub.com/static2/images/carousel_selected.png) no-repeat;
 }
 
 .header.mobile {
@@ -1599,7 +1599,7 @@ z-index:10000;
 }
 
 div.right_loader.waiting {
-background:rgba(0,0,0,0.7) url(http://static-assets.benscrub.com/static1/images/loading_for_modal_product.png) center center no-repeat;
+background:rgba(0,0,0,0.7) url(http://static-assets.benscrub.com/static2/images/loading_for_modal_product.png) center center no-repeat;
 }
 
 div.left_loader.waiting {
@@ -1865,7 +1865,7 @@ margin-top:-20px;
 text-indent:-9999px;
 width:41px;
 height:41px;
-background:url(http://static-assets.benscrub.com/static1/images/carousel_next.png) no-repeat;
+background:url(http://static-assets.benscrub.com/static2/images/carousel_next.png) no-repeat;
 }
 
 #history_carousel_wrapper div.pagination ul li span,.product_detail .wrapper div.right div.sephora_link a {
