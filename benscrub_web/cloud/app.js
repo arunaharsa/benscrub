@@ -16,17 +16,26 @@ app.set('view options', {
     layout: false
 });
 
+function is_mobile(req) {
+    var ua = req.header('user-agent');
+    if (/mobile/i.test(ua)) return true;
+    else return false;
+};
+
+
 // Router
 
 // - Web
 app.get('/', function(req, res) {
-  res.render('discover_benscrub', {});
+  if (is_mobile(req)) res.render('discover_benscrub_mobile', {});
+  else res.render('discover_benscrub', {});
 });
 
 app.get('/mobile', function(req, res) {
   res.render('discover_benscrub_mobile', {});
 });
 
+// - Web DEV environment
 app.get('/dev', function(req, res) {
   res.render('dev/discover_benscrub', {});
 });
