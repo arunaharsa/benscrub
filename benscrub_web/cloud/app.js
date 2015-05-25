@@ -61,6 +61,68 @@ app.get('/ig', function(req, res) {
   });
 });
 
+app.get('/ig/scrap_email/:username', function(req, res) {
+  req.params.username
+  ig.searchUser({"q":req.params.username}).then(function(httpResponse){
+    var user = httpResponse.data.data[0];
+    ig.getRecentMediaByUser(user.id, {"count":100}).then(
+      function(httpResponse) {
+
+        // Paginate, carrying existing posts
+        paginate(httpResponse.data.pagination.next_url, httpResponse.data.data, function(posts){
+          var bufferText;
+          for (i in posts){
+            var post = posts[i];
+            for (j in post.comments.data){
+              var comment = post.comments.data[j];
+              bufferText+=comment.text;
+              bufferText+=" "
+            }
+          };
+
+          // Regex the email
+          var emails = findEmailInString(bufferText);
+
+          // Return
+          res.send(emails.join('<br>'));
+
+        });
+    },function(error) {
+      res.error(error);
+    });
+  })
+});
+
+function paginate(nextUrl, prev_posts, success_callback){
+  Parse.Cloud.httpRequest({
+    url: nextUrl,
+    success: function(httpResponse) {    
+      var posts = httpResponse.data.data;
+      posts = prev_posts.concat(posts);
+      if (httpResponse.data.pagination.next_url){
+        paginate(httpResponse.data.pagination.next_url, posts, success_callback);
+      } else{
+        success_callback(posts);
+      }
+    },
+  });
+}
+
+
+function findEmailInString(string){
+  var searchInThisString = string; //"SomeName, First (First.SomeName@usa.mywebsite1.com) SomeName2, First2 (First2.SomeName2@usa.mywebsite1.com)";
+  var foundEmails =[];
+  var emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+  var gotcha;
+  while (match = emailRegex.exec(searchInThisString)){
+       //-- store in array the found match email
+       foundEmails.push(match[0]);
+      //-- remove the found email and continue search if there are still emails
+      searchInThisString= searchInThisString.replace(match[0],"")
+  }
+  return foundEmails;
+}
+
 app.get('/dev/drjart', function(req, res) {
   res.render('dev/unused_discover_drjart', {});
 });
