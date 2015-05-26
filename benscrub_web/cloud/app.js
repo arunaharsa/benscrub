@@ -4,6 +4,7 @@ var app = express();
 
 // Imports
 var sirclo = require('cloud/sirclo.js');
+var async = require('cloud/async.js');
 var ig = require('cloud/instagram-v1-1.0.js');
 ig.initialize('f2d80028815a437aaadc105edc4b69b1');
 // ig.setAccessToken('4152157.f2d8002.5ad2c7ad0d9845d785b5a5cc246e429');
@@ -62,7 +63,6 @@ app.get('/ig', function(req, res) {
 });
 
 app.get('/ig/scrap_email/:username', function(req, res) {
-  req.params.username
   ig.searchUser({"q":req.params.username}).then(function(httpResponse){
     var user = httpResponse.data.data[0];
     ig.getRecentMediaByUser(user.id, {"count":100}).then(
@@ -93,6 +93,138 @@ app.get('/ig/scrap_email/:username', function(req, res) {
   })
 });
 
+
+var Email_stash = Parse.Object.extend("email_stash");
+
+// Testing parse cloud code. Can use parameter to specify request
+Parse.Cloud.job("scrap_email", function(req, status) {
+  Parse.Cloud.useMasterKey();
+
+  ig.searchUser({"q":req.params.username}).then(function(httpResponse){
+    var user = httpResponse.data.data[0];
+    ig.getRecentMediaByUser(user.id, {"count":100}).then(
+      function(httpResponse) {
+        // save this result
+        var posts = httpResponse.data.data;
+        savePostsToEmailStash(posts, function(){
+          // then paginate
+          if (httpResponse.data.pagination.next_url){
+            paginate_and_save(httpResponse.data.pagination.next_url, function(){
+              status.success("scrap_email completed successfully.");
+            })
+          }
+        });
+    },function(error) {
+      res.error(error);
+    })
+  })
+})
+
+function paginate_and_save(nextUrl, success_callback){
+  Parse.Cloud.httpRequest({
+    url: nextUrl,
+    success: function(httpResponse) {    
+      var posts = httpResponse.data.data;
+      savePostsToEmailStash(posts, function(){
+        if (httpResponse.data.pagination.next_url){
+          paginate_and_save(httpResponse.data.pagination.next_url, success_callback);
+        } else{
+          success_callback();
+        }
+      });
+    },
+  })
+}
+// End Testing parse cloud code
+
+
+function savePostsToEmailStash(posts, completion){
+  var stashes = [];
+
+  // Create emailStash object for each posts.
+  async.map(posts, createEmailStashesFromPost, function (err, results) {
+
+    // Results here is a collection of array
+    // eg. [[emailStash1, emailStash2], [emailStash3, emailStash4], [emailStash5]]
+    // So we concat it
+    for (i in results){ 
+      stashes = stashes.concat(results[i]);
+    }
+
+    // Then save to parse
+    Parse.Object.saveAll(stashes, {
+      success: function(results) {
+        completion();
+      }
+    });
+  });
+}
+
+// return Array of email stash
+function createEmailStashesFromPost(post, completion){
+  var stashes = [];
+
+  var processComment = function(comment){
+    // Convert to parse object
+    var newEmailStashes = createEmailStashesFromComment(comment);
+    // Set additional properties
+    for (j in newEmailStashes){
+      emailStash = newEmailStashes[j];
+      emailStash.set("source", post.user.username);
+    }
+    // Store in stash
+    stashes = stashes.concat(newEmailStashes);
+
+  }
+
+  // When comments count is more than what we have
+  // it means current data is not complete
+  // we need to query for the post object to get more data
+  if (post.comments.count > post.comments.data.length){
+
+    ig.getMediaComments(post.id).then(
+      function(httpResponse) {
+        for (i in httpResponse.data.data){
+          var comment = httpResponse.data.data[i]; 
+          processComment(comment);
+        }
+
+        //return callback
+        completion(null, stashes);
+
+    },function(error) {
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        console.log(error);
+        completion(error, stashes);
+    });
+
+  // When the data is complete, do synchronous processing
+  } else{
+    for (i in post.comments.data){
+      var comment = post.comments.data[i]; 
+      processComment(comment);
+    }
+    //return callback
+    completion(null, stashes);
+
+  }
+
+}
+
+// return Array of email stash
+function createEmailStashesFromComment(comment){
+  var stashes = [];
+  var emails = findEmailInString(comment.text);
+  for (k in emails){
+    email = emails[k];
+    var email_stash = new Email_stash();
+    email_stash.set("email", email);
+    stashes.push(email_stash);
+  }
+  return stashes;
+}
+
+
 function paginate(nextUrl, prev_posts, success_callback){
   Parse.Cloud.httpRequest({
     url: nextUrl,
@@ -107,7 +239,6 @@ function paginate(nextUrl, prev_posts, success_callback){
     },
   });
 }
-
 
 function findEmailInString(string){
   var searchInThisString = string; //"SomeName, First (First.SomeName@usa.mywebsite1.com) SomeName2, First2 (First2.SomeName2@usa.mywebsite1.com)";

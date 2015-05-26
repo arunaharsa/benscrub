@@ -67,6 +67,10 @@
       return wrappedHttpRequest(_apiUrl + "locations/" + location, params);
     },
 
+    getMediaComments: function(media, params) {
+      return wrappedHttpRequest(_apiUrl + "media/" + media + "/comments", params);
+    },
+
     getPopularMedia: function(params) {
       return wrappedHttpRequest(_apiUrl + "media/popular", params);
     },
