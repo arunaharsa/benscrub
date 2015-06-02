@@ -11,7 +11,6 @@ html(lang='en')
     script(type='text/javascript').
       var ua=navigator.userAgent,checker={iphone:ua.match(/(iPhone|iPod)/),blackberry:ua.match(/BlackBerry/),android:ua.match(/Android/),ipad:ua.match(/iPad/)},mvp=document.getElementById("vp");checker.android||checker.iphone?mvp.setAttribute("content","width=502"):checker.ipad?mvp.setAttribute("content","width=1012"):mvp.setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1");
     link(href='http://static-assets.benscrub.com/static2/css/compiled_mobile.css', rel='stylesheet')
-    // Google Tag Manager
     noscript
       iframe(src='//www.googletagmanager.com/ns.html?id=GTM-PW6BQ3', height='0', width='0', style='display:none;visibility:hidden')
     script.
@@ -20,6 +19,8 @@ html(lang='en')
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-PW6BQ3');
-    // End Google Tag Manager
   body
     block appcontent
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+    script
+      function validateEmail(a){var e=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;return e.test(a)}function postEmailToGoogle(){var a=$(".email_text"),e=a.val();""!==e&&validateEmail(e)?$.ajax({url:"https://docs.google.com/forms/d/1BaRieNjpZAIZLUg3jAcvBuJtB5dt4Ot8gpo5_fgT-WQ/formResponse",data:{"entry.128654343":e},type:"POST",dataType:"xml",statusCode:{0:function(){a.val(""),alert("Thank you, your email has been accepted. We'll get back to you shortly.")},200:function(){a.val(""),alert("Thank you, your email has been accepted. We'll get back to you shortly.")}}}):alert("Please enter a valid email address")}$(document).ready(function(){$(".mailinglist_btn").on("click",function(a){a.preventDefault(),postEmailToGoogle()})});

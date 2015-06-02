@@ -24,6 +24,7 @@ html(lang='en')
     // End Google Tag Manager
   body
     block appcontent
-    //- script(type='text/javascript').
-    //-   $(document).ready(function(e){ TIIA.views.welcome_view();});      
-
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+    script
+      // send ajax form
+      function validateEmail(a){var e=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;return e.test(a)}function postEmailToGoogle(){var a=$(".email_text"),e=a.val();""!==e&&validateEmail(e)?$.ajax({url:"https://docs.google.com/forms/d/1BaRieNjpZAIZLUg3jAcvBuJtB5dt4Ot8gpo5_fgT-WQ/formResponse",data:{"entry.128654343":e},type:"POST",dataType:"xml",statusCode:{0:function(){a.val(""),alert("Thank you, your email has been accepted. We'll get back to you shortly.")},200:function(){a.val(""),alert("Thank you, your email has been accepted. We'll get back to you shortly.")}}}):alert("Please enter a valid email address")}$(document).ready(function(){$(".mailinglist_btn").on("click",function(a){a.preventDefault(),postEmailToGoogle()})});
