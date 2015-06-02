@@ -7,7 +7,8 @@ var sirclo = require('cloud/sirclo.js');
 var async = require('cloud/async.js');
 var ig = require('cloud/instagram-v1-1.0.js');
 ig.initialize('f2d80028815a437aaadc105edc4b69b1');
-// ig.setAccessToken('4152157.f2d8002.5ad2c7ad0d9845d785b5a5cc246e429');
+ig.setAccessToken('1506972754.1fb234f.ab41e5e202d04682afcf4b16877059cb'); // access token
+var ig_user_id = 1506972754;
 
 // Global app configuration section
 app.set('views', 'cloud/views');  // Specify the folder to find templates
@@ -62,6 +63,7 @@ app.get('/ig', function(req, res) {
   });
 });
 
+// NOT USED ANYMORE, USE PARSE CLOUD CODE
 app.get('/ig/scrap_email/:username', function(req, res) {
   ig.searchUser({"q":req.params.username}).then(function(httpResponse){
     var user = httpResponse.data.data[0];
@@ -93,10 +95,53 @@ app.get('/ig/scrap_email/:username', function(req, res) {
   })
 });
 
+var Instagram_info = Parse.Object.extend("ig_info");
+
+// NOT USED ANYMORE, USE PARSE CLOUD CODE
+app.get('/ig_info', function(req, res) {
+  ig.getSelfUser().then(
+    function(httpResponse){
+    res.send(httpResponse.data);
+  },function(error) {
+    res.send(error);
+  });
+});
+
+Parse.Cloud.job("ig_info", function(req, status) {
+  Parse.Cloud.useMasterKey();
+  ig.getSelfUser().then(
+    function(httpResponse){
+
+      var query = new Parse.Query(Instagram_info);
+      query.descending('createdAt');
+      query.first({
+        success: function(prev_instagram_info) {
+          var instagram_info = new Instagram_info();
+          instagram_info.set("followed_by", httpResponse.data.data.counts.followed_by); // get real number of followers
+          if (prev_instagram_info){  // get difference from previous row  
+            instagram_info.set("followed_by_difference", parseInt(httpResponse.data.data.counts.followed_by) - prev_instagram_info.get('followed_by'));          
+          }
+          instagram_info.save(null, {
+            success: function() {
+              status.success("ig_info completed successfully.");
+            }, error: function(){
+              status.error("ig_info failed to save")
+            }
+          });
+
+        }
+      });
+  },function(error) {
+    status.error("ig_info failed")
+  });
+})
+
+
 
 var Email_stash = Parse.Object.extend("email_stash");
 
-// Testing parse cloud code. Can use parameter to specify request
+// To scrap any emails within user's comment
+// Receive parameter {"username":"aruararu"}
 Parse.Cloud.job("scrap_email", function(req, status) {
   Parse.Cloud.useMasterKey();
 

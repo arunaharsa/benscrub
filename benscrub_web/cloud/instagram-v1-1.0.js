@@ -63,6 +63,10 @@
       return wrappedHttpRequest(_apiUrl + "users/" + user, params);
     },
 
+    getSelfUser: function(params) {
+      return wrappedHttpRequest(_apiUrl + "users/self", params, true);
+    },
+
     getLocation: function(location, params) {
       return wrappedHttpRequest(_apiUrl + "locations/" + location, params);
     },
