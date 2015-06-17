@@ -69,7 +69,6 @@ app.get('/ig/scrap_email/:username', function(req, res) {
     var user = httpResponse.data.data[0];
     ig.getRecentMediaByUser(user.id, {"count":100}).then(
       function(httpResponse) {
-
         // Paginate, carrying existing posts
         paginate(httpResponse.data.pagination.next_url, httpResponse.data.data, function(posts){
           var bufferText;
@@ -84,7 +83,6 @@ app.get('/ig/scrap_email/:username', function(req, res) {
 
           // Regex the email
           var emails = findEmailInString(bufferText);
-
           // Return
           res.send(emails.join('<br>'));
 
@@ -144,10 +142,10 @@ var Email_stash = Parse.Object.extend("email_stash");
 // Receive parameter {"username":"aruararu"}
 Parse.Cloud.job("scrap_email", function(req, status) {
   Parse.Cloud.useMasterKey();
-
-  ig.searchUser({"q":req.params.username}).then(function(httpResponse){
+  var objParams = JSON.parse(JSON.stringify(eval("(" + req.params + ")")));
+  ig.searchUser({"q":objParams.username}).then(function(httpResponse){
     var user = httpResponse.data.data[0];
-    ig.getRecentMediaByUser(user.id, {"count":100}).then(
+    ig.getRecentMediaByUser(user.id, {"count":20}).then(
       function(httpResponse) {
         // save this result
         var posts = httpResponse.data.data;
@@ -160,7 +158,7 @@ Parse.Cloud.job("scrap_email", function(req, status) {
           }
         });
     },function(error) {
-      res.error(error);
+      status.error(JSON.stringify(error));
     })
   })
 })
@@ -238,7 +236,6 @@ function createEmailStashesFromPost(post, completion){
         completion(null, stashes);
 
     },function(error) {
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
         console.log(error);
         completion(error, stashes);
     });
@@ -271,18 +268,24 @@ function createEmailStashesFromComment(comment){
 
 
 function paginate(nextUrl, prev_posts, success_callback){
-  Parse.Cloud.httpRequest({
-    url: nextUrl,
-    success: function(httpResponse) {    
-      var posts = httpResponse.data.data;
-      posts = prev_posts.concat(posts);
-      if (httpResponse.data.pagination.next_url){
-        paginate(httpResponse.data.pagination.next_url, posts, success_callback);
-      } else{
-        success_callback(posts);
+  if (nextUrl){
+    Parse.Cloud.httpRequest({
+      url: nextUrl,
+      success: function(httpResponse) {    
+        var posts = httpResponse.data.data;
+        posts = prev_posts.concat(posts);
+        if (httpResponse.data.pagination.next_url){
+          paginate(httpResponse.data.pagination.next_url, posts, success_callback);
+        } else{
+          success_callback(posts);
+        }
+      },
+      error: function(error){
       }
-    },
-  });
+    });
+  } else{
+    success_callback(prev_posts);
+  }
 }
 
 function findEmailInString(string){
@@ -296,7 +299,21 @@ function findEmailInString(string){
       //-- remove the found email and continue search if there are still emails
       searchInThisString= searchInThisString.replace(match[0],"")
   }
-  return foundEmails;
+
+  var sanitizedEmails = [];
+  for (i in foundEmails){
+    var email = foundEmails[i];
+    if (email.match(".com$")||email.match(".co.id$")){
+      sanitizedEmails.push(email);
+    } else{
+      var lastIndexOfDot = email.lastIndexOf(" ")
+      var email = email.substring(0, lastIndexOfDot);
+      if (email.match(".com$")||email.match(".co.id$")){
+        sanitizedEmails.push(email);
+      }
+    }
+  }
+  return sanitizedEmails;
 }
 
 app.get('/dev/drjart', function(req, res) {
