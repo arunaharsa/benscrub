@@ -88,7 +88,9 @@ app.get('/ig/scrap_email/:username', function(req, res) {
 
         });
     },function(error) {
-      res.error(error);
+      console.log('err1');
+      res.send('gege1');
+      // res.error(error);
     });
   })
 });
@@ -134,6 +136,77 @@ Parse.Cloud.job("ig_info", function(req, status) {
   });
 })
 
+function getGojekAcount(lastAccountID, completion){
+  var gojekAccount = new GojekAccount2();
+  Parse.Cloud.httpRequest({
+    url: "http://api.gojek.co.id/gojek/customer/"+lastAccountID,
+    method: "GET",
+    headers: gojek_header_request(),
+    success: function(httpResponse) {
+      // console.log('gojek query done'+JSON.stringify(httpResponse.data));
+      gojekAccount.set("phone", httpResponse.data.phone);
+      gojekAccount.set("email", httpResponse.data.email);
+      gojekAccount.set("name", httpResponse.data.name);
+      gojekAccount.set("accountID", httpResponse.data.id);
+      gojekAccount.set("corporateId", httpResponse.data.corporateId);
+      gojekAccount.set("corporateName", httpResponse.data.corporateName);
+      gojekAccount.set("creditBalance", httpResponse.data.creditBalance);
+      gojekAccount.set("newCustomer", httpResponse.data.newCustomer);
+      gojekAccount.set("blacklisted", httpResponse.data.blacklisted);
+      gojekAccount.set("signupDate", httpResponse.data.signupDate);
+      completion(null, gojekAccount);
+    },
+    error: function(err) {
+      console.log("gojek_scrap_account: request to gojek failed: acc_id " + lastAccountID);
+      gojekAccount.set("accountID", lastAccountID);
+      completion(null, gojekAccount);
+    }
+  });
+}
+
+var K_NUMBER_OF_ACCOUNT_PER_REQUEST = 1000;
+var GojekAccount2 = Parse.Object.extend("gojek_account2");
+Parse.Cloud.job("gojek_scrap_account", function(req, status) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(GojekAccount2);
+  var lastAccountID;
+  query.descending('accountID');
+  query.first({
+    success: function(firstGojekAccount) {
+      lastAccountID = firstGojekAccount.get('accountID');
+      // var stashes = [];
+      // Create emailStash object for each posts.
+      var accountListToScrap = [];
+      for (var i=1; i<=K_NUMBER_OF_ACCOUNT_PER_REQUEST; i++){
+        accountListToScrap.push(lastAccountID+i);
+      }
+      async.map(accountListToScrap, getGojekAcount, function (err, results) {
+        console.log('return res in count ' + results.length);
+        console.log(JSON.stringify(results));
+        // Then save to parse
+        var sanitizedResults = [];
+        for (var i=0; i<results.length; i++){
+          if (results[i]){
+            sanitizedResults.push(results[i]);
+          }
+        }
+        Parse.Object.saveAll(sanitizedResults, {
+          success: function(res) {
+            status.success("gojek_scrap_account complete");
+          }, 
+          error: function(error){
+            status.error("gojek_scrap_account not saved");     
+          }
+        });
+      });
+
+    }
+  });
+});
+
+
+
+
 
 
 var Email_stash = Parse.Object.extend("email_stash");
@@ -144,38 +217,59 @@ Parse.Cloud.job("scrap_email", function(req, status) {
   Parse.Cloud.useMasterKey();
   var objParams = JSON.parse(JSON.stringify(eval("(" + req.params + ")")));
   ig.searchUser({"q":objParams.username}).then(function(httpResponse){
+    console.log('sukses1');
     var user = httpResponse.data.data[0];
     ig.getRecentMediaByUser(user.id, {"count":20}).then(
       function(httpResponse) {
+        console.log('sukses1.5');
         // save this result
         var posts = httpResponse.data.data;
         savePostsToEmailStash(posts, function(){
           // then paginate
           if (httpResponse.data.pagination.next_url){
             paginate_and_save(httpResponse.data.pagination.next_url, function(){
-              status.success("scrap_email completed successfully.");
+              status.success("scrap_email: "+objParams.username + "complete");
             })
           }
         });
     },function(error) {
+      console.log('gagal1');
       status.error(JSON.stringify(error));
     })
   })
 })
+
+function sleep(time, callback) {
+    var stop = new Date().getTime();
+    while(new Date().getTime() < stop + time) {
+        ;
+    }
+    callback();
+}
 
 function paginate_and_save(nextUrl, success_callback){
   Parse.Cloud.httpRequest({
     url: nextUrl,
     success: function(httpResponse) {    
       var posts = httpResponse.data.data;
+      console.log('sukses2');
       savePostsToEmailStash(posts, function(){
+        console.log('sukses3: saved to parse');
         if (httpResponse.data.pagination.next_url){
-          paginate_and_save(httpResponse.data.pagination.next_url, success_callback);
+          // setTimeout(function(){
+          // }, 500);
+          sleep(600, function() {
+            paginate_and_save(httpResponse.data.pagination.next_url, success_callback);
+             // executes after one second, and blocks the thread
+          }); 
         } else{
           success_callback();
         }
-      });
+      });     
     },
+    error: function(error){      
+      console.log('gagal2');
+    }
   })
 }
 // End Testing parse cloud code
@@ -197,7 +291,11 @@ function savePostsToEmailStash(posts, completion){
     // Then save to parse
     Parse.Object.saveAll(stashes, {
       success: function(results) {
+        console.log("sukses3: saving succeed before completion "+ JSON.stringify(results));
         completion();
+      }, 
+      error: function(error){
+        console.log("gagal3: saving error");
       }
     });
   });
@@ -233,8 +331,10 @@ function createEmailStashesFromPost(post, completion){
         }
 
         //return callback
-        completion(null, stashes);
-
+        sleep(600, function() {
+          completion(null, stashes);
+        }); 
+      
     },function(error) {
         console.log(error);
         completion(error, stashes);
@@ -279,8 +379,10 @@ function paginate(nextUrl, prev_posts, success_callback){
         } else{
           success_callback(posts);
         }
+        console.log("not err"+nextUrl);
       },
       error: function(error){
+        console.log(JSON.stringify(error));
       }
     });
   } else{
